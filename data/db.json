@@ -1,0 +1,44 @@
+{
+	"trains": [
+		{
+			"id": 1,
+			"title": "train 1"
+		},
+		{
+			"id": 2,
+			"title": "train 2"
+		},
+		{
+			"id": 3,
+			"title": "train 3"
+		}
+	],
+	"flights": [
+		{
+			"id": 1,
+			"title": "flight 1"
+		},
+		{
+			"id": 2,
+			"title": "flight 2"
+		},
+		{
+			"id": 3,
+			"title": "flight 3"
+		}
+	],
+	"hotels": [
+		{
+			"id": 1,
+			"title": "hotel 1"
+		},
+		{
+			"id": 2,
+			"title": "hotel 2"
+		},
+		{
+			"id": 3,
+			"title": "hotel 3"
+		}
+	]
+}
