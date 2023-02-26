@@ -15,8 +15,8 @@ const LoginPage = () => {
 	};
 
 	return (
-		<main className={styles.Login__Container}>
-			<form className={styles.Login__Form} onSubmit={onLoginSubmit}>
+		<main className={styles.Container}>
+			<form className={styles.Form} onSubmit={onLoginSubmit}>
 				<div>
 					<Input
 						value={formValues.username}

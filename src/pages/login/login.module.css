@@ -1,11 +1,11 @@
-.Login__Container {
+.Container {
 	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.Login__Form {
+.Form {
 	padding: 20px;
 	display: flex;
 	flex-direction: column;

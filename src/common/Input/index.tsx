@@ -13,7 +13,7 @@ const Input: FC<InputProps> = ({
 	...props
 }) => {
 	const classnames = isError
-		? `${styles.Input} ${styles.Input__Error}`
+		? `${styles.Input} ${styles.Error}`
 		: `${styles.Input}`;
 	return (
 		<>
