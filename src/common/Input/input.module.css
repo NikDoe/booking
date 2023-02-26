@@ -1,0 +1,8 @@
+.Input {
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+.Input__Error {
+	color: red;
+}

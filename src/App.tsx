@@ -1,12 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./common";
-import { AdminPage, Flights, Hotels, Public, Trains } from "./pages";
+import { AdminPage, Flights, Hotels, LoginPage, Public, Trains } from "./pages";
 
 function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>
 				<Route index element={<Public />} />
+				<Route path="login" element={<LoginPage />} />
 				<Route path="flights">
 					<Route index element={<Flights />} />
 				</Route>
