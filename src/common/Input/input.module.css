@@ -4,5 +4,13 @@
 }
 
 .Error {
-	color: red;
+	background-color: indianred;
+}
+
+.Error.Input::placeholder {
+	color: #fff;
+}
+
+.Validation {
+	color: indianred;
 }

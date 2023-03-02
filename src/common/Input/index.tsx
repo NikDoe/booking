@@ -17,8 +17,10 @@ const Input: FC<InputProps> = ({
 		: `${styles.Input}`;
 	return (
 		<>
+			{isError && validationText && (
+				<p className={styles.Validation}>{validationText}</p>
+			)}
 			<input className={classnames} {...props} />
-			{isError && validationText && <p>{validationText}</p>}
 		</>
 	);
 };
