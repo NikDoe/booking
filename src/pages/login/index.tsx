@@ -1,6 +1,5 @@
-import { FormEvent, ChangeEvent, useState } from "react";
-import { Button } from "webli-ui";
-import { Input } from "../../common";
+import { FormEvent, ChangeEvent, useState, FocusEvent } from "react";
+import { Button, FormField } from "webli-ui";
 
 import styles from "./login.module.css";
 
@@ -42,18 +41,40 @@ const LoginPage = () => {
 		pError: "",
 	});
 
+	const [isFocused, setIsFocused] = useState({
+		userName: false,
+		password: false,
+	});
+
 	const onLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+	};
+
+	const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
+		setIsFocused({ ...isFocused, [e.target.name]: true });
+	};
+
+	const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+		if (e.target.value !== "") {
+			setIsFocused({ ...isFocused, [e.target.name]: true });
+		} else {
+			setIsFocused({ ...isFocused, [e.target.name]: false });
+		}
 	};
 
 	return (
 		<main className={styles.Container}>
 			<form className={styles.Form} onSubmit={onLoginSubmit}>
 				<div>
-					<Input
+					<FormField
 						value={formValues.username}
-						placeholder="username"
+						label="login"
 						type="text"
+						name="userName"
+						isFocused={isFocused.userName}
+						isRequired={true}
+						onFocus={handleFocus}
+						onBlur={handleBlur}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => {
 							const username = e.target.value;
 							setFormValues({
@@ -68,16 +89,20 @@ const LoginPage = () => {
 							setFormErors({ ...formErrors, uError: error });
 						}}
 						{...(!!formErrors.uError && {
-							isError: !!formErrors.uError,
-							validationText: formErrors.uError,
+							error: formErrors.uError,
 						})}
 					/>
 				</div>
 				<div>
-					<Input
+					<FormField
 						value={formValues.password}
 						placeholder="password"
 						type="password"
+						name="password"
+						isFocused={isFocused.password}
+						isRequired={true}
+						onFocus={handleFocus}
+						onBlur={handleBlur}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => {
 							const password = e.target.value;
 							setFormValues({
@@ -92,8 +117,7 @@ const LoginPage = () => {
 							setFormErors({ ...formErrors, pError: error });
 						}}
 						{...(!!formErrors.pError && {
-							isError: !!formErrors.pError,
-							validationText: formErrors.pError,
+							error: formErrors.pError,
 						})}
 					/>
 				</div>

@@ -1,8 +1,7 @@
 import { FC, FormEvent } from "react";
 import { useTitle } from "../../hooks";
 
-import { Input } from "../../common";
-import { Button } from "webli-ui";
+import { Button, Input } from "webli-ui";
 
 import styles from "./styles.module.css";
 
