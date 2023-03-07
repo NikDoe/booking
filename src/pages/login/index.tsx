@@ -1,5 +1,5 @@
 import { FormEvent, ChangeEvent, useState, FocusEvent } from "react";
-import { Button, FormField } from "webli-ui";
+import { Button, CheckBox, FormField } from "webli-ui";
 
 import styles from "./login.module.css";
 
@@ -121,6 +121,7 @@ const LoginPage = () => {
 						})}
 					/>
 				</div>
+				<CheckBox id="1" label="запомнить вход" />
 				<Button onClick={() => alert("вы вошли")}>login</Button>
 			</form>
 		</main>
