@@ -17,7 +17,7 @@
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.6.1",
 		"swr": "^2.0.3",
-		"webli-ui": "^0.4.2"
+		"webli-ui": "^0.5.2"
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.26",

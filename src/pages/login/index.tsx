@@ -96,7 +96,7 @@ const LoginPage = () => {
 				<div>
 					<FormField
 						value={formValues.password}
-						placeholder="password"
+						label="password"
 						type="password"
 						name="password"
 						isFocused={isFocused.password}
