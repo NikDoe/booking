@@ -34,6 +34,7 @@ const LoginPage = () => {
 	const [formValues, setFormValues] = useState({
 		username: "",
 		password: "",
+		isMyComputer: false,
 	});
 
 	const [formErrors, setFormErors] = useState<IFormErors>({
@@ -121,7 +122,15 @@ const LoginPage = () => {
 						})}
 					/>
 				</div>
-				<CheckBox id="1" label="запомнить вход" />
+				<CheckBox
+					id="1"
+					label="запомнить вход"
+					isChecked={formValues.isMyComputer}
+					onChange={(e: ChangeEvent<HTMLInputElement>) => {
+						const isMyComputer = e.target.checked;
+						setFormValues({ ...formValues, isMyComputer });
+					}}
+				/>
 				<Button onClick={() => alert("вы вошли")}>login</Button>
 			</form>
 		</main>
