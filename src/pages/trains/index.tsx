@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import TrainsList from "../../components/TrainsList";
 import { useTitle } from "../../hooks";
 
@@ -6,6 +7,7 @@ const Trains = () => {
 	return (
 		<main>
 			<TrainsList />
+			<Link to="/">на главную</Link>
 		</main>
 	);
 };
