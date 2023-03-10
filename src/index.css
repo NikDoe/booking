@@ -1,7 +1,14 @@
 @import url("webli-ui/dist/style.css");
 
 :root {
+	/* COLORS */
 	--main-color: #ecf1f7;
+	--second-color: #6b99c3;
+	--font-color: #222;
+	--active-font-color: #fff;
+
+	/* FONTS */
+	--main-size: 18px;
 }
 
 * {
