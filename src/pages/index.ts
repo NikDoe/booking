@@ -1,8 +1,10 @@
-import AdminPage from "./adminPage";
-import Flights from "./fligts";
-import Hotels from "./hotels";
-import LoginPage from "./login";
+import { lazy } from "react";
 import Public from "./public";
-import Trains from "./trains";
+
+const AdminPage = lazy(() => import("./adminPage"));
+const Flights = lazy(() => import("./fligts"));
+const Hotels = lazy(() => import("./hotels"));
+const LoginPage = lazy(() => import("./login"));
+const Trains = lazy(() => import("./trains"));
 
 export { AdminPage, Flights, Hotels, LoginPage, Public, Trains };
