@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import FlightsList from "../../components/FlightsList";
 import { useTitle } from "../../hooks";
 
 const Flights = () => {
@@ -6,6 +7,7 @@ const Flights = () => {
 	return (
 		<div>
 			<h1>страница самолётов</h1>
+			<FlightsList />
 			<Link to="/">на главную</Link>
 		</div>
 	);
