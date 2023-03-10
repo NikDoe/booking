@@ -2,7 +2,7 @@ import { useTitle } from "../../hooks";
 
 const AdminPage = () => {
 	useTitle("админ-панель");
-	return <main>админка</main>;
+	return <div>админка</div>;
 };
 
 export default AdminPage;

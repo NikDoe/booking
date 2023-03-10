@@ -4,10 +4,10 @@ import { useTitle } from "../../hooks";
 const Hotels = () => {
 	useTitle("забронировать билеты в отель онлайн");
 	return (
-		<main>
+		<div>
 			<h1>страница отелей</h1>
 			<Link to="/">на главную</Link>
-		</main>
+		</div>
 	);
 };
 

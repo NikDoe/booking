@@ -4,10 +4,10 @@ import { useTitle } from "../../hooks";
 const Flights = () => {
 	useTitle("забронировать билеты на самолёт онлайн");
 	return (
-		<main>
+		<div>
 			<h1>страница самолётов</h1>
 			<Link to="/">на главную</Link>
-		</main>
+		</div>
 	);
 };
 

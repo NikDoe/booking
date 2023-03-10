@@ -64,76 +64,68 @@ const LoginPage = () => {
 	};
 
 	return (
-		<div className={styles.Container}>
-			<form className={styles.Form} onSubmit={onLoginSubmit}>
-				<div>
-					<FormField
-						value={formValues.username}
-						label="login"
-						type="text"
-						name="userName"
-						isFocused={isFocused.userName}
-						isRequired={true}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						onChange={(e: ChangeEvent<HTMLInputElement>) => {
-							const username = e.target.value;
-							setFormValues({
-								...formValues,
-								username,
-							});
-
-							const error = validateLoginForm(
-								"username",
-								username,
-							);
-							setFormErors({ ...formErrors, uError: error });
-						}}
-						{...(!!formErrors.uError && {
-							error: formErrors.uError,
-						})}
-					/>
-				</div>
-				<div>
-					<FormField
-						value={formValues.password}
-						label="password"
-						type="password"
-						name="password"
-						isFocused={isFocused.password}
-						isRequired={true}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						onChange={(e: ChangeEvent<HTMLInputElement>) => {
-							const password = e.target.value;
-							setFormValues({
-								...formValues,
-								password,
-							});
-
-							const error = validateLoginForm(
-								"password",
-								password,
-							);
-							setFormErors({ ...formErrors, pError: error });
-						}}
-						{...(!!formErrors.pError && {
-							error: formErrors.pError,
-						})}
-					/>
-				</div>
-				<CheckBox
-					id="1"
-					label="запомнить вход"
-					isChecked={formValues.isMyComputer}
+		<form className={styles.Form} onSubmit={onLoginSubmit}>
+			<div>
+				<FormField
+					value={formValues.username}
+					label="login"
+					type="text"
+					name="userName"
+					isFocused={isFocused.userName}
+					isRequired={true}
+					onFocus={handleFocus}
+					onBlur={handleBlur}
 					onChange={(e: ChangeEvent<HTMLInputElement>) => {
-						const isMyComputer = e.target.checked;
-						setFormValues({ ...formValues, isMyComputer });
+						const username = e.target.value;
+						setFormValues({
+							...formValues,
+							username,
+						});
+
+						const error = validateLoginForm("username", username);
+						setFormErors({ ...formErrors, uError: error });
 					}}
+					{...(!!formErrors.uError && {
+						error: formErrors.uError,
+					})}
 				/>
-				<Button onClick={() => alert("вы вошли")}>login</Button>
-			</form>
-		</div>
+			</div>
+			<div>
+				<FormField
+					value={formValues.password}
+					label="password"
+					type="password"
+					name="password"
+					isFocused={isFocused.password}
+					isRequired={true}
+					onFocus={handleFocus}
+					onBlur={handleBlur}
+					onChange={(e: ChangeEvent<HTMLInputElement>) => {
+						const password = e.target.value;
+						setFormValues({
+							...formValues,
+							password,
+						});
+
+						const error = validateLoginForm("password", password);
+						setFormErors({ ...formErrors, pError: error });
+					}}
+					{...(!!formErrors.pError && {
+						error: formErrors.pError,
+					})}
+				/>
+			</div>
+			<CheckBox
+				id="1"
+				label="запомнить вход"
+				isChecked={formValues.isMyComputer}
+				onChange={(e: ChangeEvent<HTMLInputElement>) => {
+					const isMyComputer = e.target.checked;
+					setFormValues({ ...formValues, isMyComputer });
+				}}
+			/>
+			<Button onClick={() => alert("вы вошли")}>login</Button>
+		</form>
 	);
 };
 
