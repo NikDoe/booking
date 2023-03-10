@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import TrainsList from "../../components/TrainsList";
+import { TrainsList } from "../../components";
 import { useTitle } from "../../hooks";
 
 const Trains = () => {

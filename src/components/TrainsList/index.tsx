@@ -5,7 +5,7 @@ import {
 	trainsUrlEndpoint as cacheKey,
 } from "../../api";
 import { ListWrapper } from "../common";
-import SingleTrain from "../SingleTrain";
+import TrainCard from "../TrainCard";
 
 const TrainsList = () => {
 	const { isLoading, error, data: trains } = useSWR(cacheKey, getTrains);
@@ -20,7 +20,7 @@ const TrainsList = () => {
 			<ListWrapper>
 				{trains?.map((train: ItrainsApi) => {
 					return (
-						<SingleTrain
+						<TrainCard
 							key={train.id}
 							to={`${train.id}`}
 							id={train.id}
@@ -31,7 +31,7 @@ const TrainsList = () => {
 		);
 	}
 
-	return <main>{content}</main>;
+	return <>{content}</>;
 };
 
 export default TrainsList;

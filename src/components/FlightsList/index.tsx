@@ -1,13 +1,13 @@
 import useSWR from "swr";
 import { flightsUrlEndpoint, getFlights, IFlightsApi } from "../../api";
 import { ListWrapper } from "../common";
-import SingleFlight from "../SingleFlight";
+import FlightCard from "../FlightCard";
 
 const FlightsList = () => {
 	const {
 		isLoading,
 		error,
-		data: fights,
+		data: flights,
 	} = useSWR(flightsUrlEndpoint, getFlights);
 
 	let content;
@@ -18,9 +18,9 @@ const FlightsList = () => {
 	} else {
 		content = (
 			<ListWrapper>
-				{fights?.map((flight: IFlightsApi) => {
+				{flights?.map((flight: IFlightsApi) => {
 					return (
-						<SingleFlight
+						<FlightCard
 							key={flight.id}
 							to={`${flight.id}`}
 							id={flight.id}
@@ -31,7 +31,7 @@ const FlightsList = () => {
 		);
 	}
 
-	return <main>{content}</main>;
+	return <>{content}</>;
 };
 
 export default FlightsList;
