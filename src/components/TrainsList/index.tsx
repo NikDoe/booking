@@ -4,6 +4,7 @@ import {
 	ItrainsApi,
 	trainsUrlEndpoint as cacheKey,
 } from "../../api";
+import SingleTrain from "../SingleTrain";
 
 const TrainsList = () => {
 	const { isLoading, error, data: trains } = useSWR(cacheKey, getTrains);
@@ -16,9 +17,7 @@ const TrainsList = () => {
 	} else {
 		content = trains?.map((train: ItrainsApi) => {
 			return (
-				<div key={train.id}>
-					<h1>{train.title}</h1>
-				</div>
+				<SingleTrain key={train.id} to={`${train.id}`} id={train.id} />
 			);
 		});
 	}

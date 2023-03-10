@@ -1,4 +1,13 @@
 import {
+	addFlight,
+	deleteFlight,
+	flightsUrlEndpoint,
+	getFlights,
+	IFlightsApi,
+	updateFlight,
+} from "./flightsApi";
+
+import {
 	ItrainsApi,
 	trainsUrlEndpoint,
 	getTrains,
@@ -7,5 +16,16 @@ import {
 	deleteTrain,
 } from "./trainsApi";
 
-export { addTrain, deleteTrain, getTrains, trainsUrlEndpoint, updateTrain };
-export type { ItrainsApi };
+export {
+	addFlight,
+	addTrain,
+	deleteFlight,
+	deleteTrain,
+	getFlights,
+	getTrains,
+	flightsUrlEndpoint,
+	trainsUrlEndpoint,
+	updateFlight,
+	updateTrain,
+};
+export type { IFlightsApi, ItrainsApi };

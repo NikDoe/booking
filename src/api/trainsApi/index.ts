@@ -1,19 +1,17 @@
-import ky from "ky";
+import { api } from "../configApi";
 
 export interface ItrainsApi {
 	id: number;
 	title: string;
+	from: string;
+	to: string;
 }
-
-const trainsApi = ky.create({
-	prefixUrl: "http://localhost:3500",
-});
 
 export const trainsUrlEndpoint = "trains";
 
 export const getTrains = async (): Promise<ItrainsApi[]> => {
 	try {
-		return await trainsApi.get(trainsUrlEndpoint).json();
+		return await api.get(trainsUrlEndpoint).json();
 	} catch (error) {
 		throw new Error("не удалось получить поезда"); //заменить на обработчик ошибок
 	}
@@ -21,7 +19,7 @@ export const getTrains = async (): Promise<ItrainsApi[]> => {
 
 export const addTrain = async ({ id, title }: ItrainsApi) => {
 	try {
-		return await trainsApi
+		return await api
 			.post(trainsUrlEndpoint, { json: { id, title } })
 			.json();
 	} catch (error) {
@@ -31,7 +29,7 @@ export const addTrain = async ({ id, title }: ItrainsApi) => {
 
 export const updateTrain = async (train: ItrainsApi) => {
 	try {
-		return await trainsApi
+		return await api
 			.patch(`${trainsUrlEndpoint}/${train.id}`, { json: train })
 			.json();
 	} catch (error) {
@@ -41,7 +39,7 @@ export const updateTrain = async (train: ItrainsApi) => {
 
 export const deleteTrain = async ({ id }: Pick<ItrainsApi, "id">) => {
 	try {
-		return await trainsApi
+		return await api
 			.delete(`${trainsUrlEndpoint}/${id}`, { json: id })
 			.json();
 	} catch (error) {
