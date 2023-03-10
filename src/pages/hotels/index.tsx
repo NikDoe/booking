@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { HotelsList } from "../../components";
 import { useTitle } from "../../hooks";
 
 const Hotels = () => {
@@ -6,6 +7,7 @@ const Hotels = () => {
 	return (
 		<div>
 			<h1>страница отелей</h1>
+			<HotelsList />
 			<Link to="/">на главную</Link>
 		</div>
 	);

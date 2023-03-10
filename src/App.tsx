@@ -4,6 +4,7 @@ import {
 	AdminPage,
 	Flight,
 	Flights,
+	Hotel,
 	Hotels,
 	LoginPage,
 	Public,
@@ -27,6 +28,7 @@ function App() {
 				</Route>
 				<Route path="hotels">
 					<Route index element={<Hotels />} />
+					<Route path=":id" element={<Hotel />} />
 				</Route>
 				<Route path="admin">
 					<Route index element={<AdminPage />} />
