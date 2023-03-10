@@ -1,9 +1,0 @@
-.Main {
-	width: 100vw;
-	background-color: var(--main-color);
-	font-size: var(--main-size);
-	color: var(--font-color);
-	text-decoration: none;
-	padding: 10px;
-	margin-top: 20px;
-}

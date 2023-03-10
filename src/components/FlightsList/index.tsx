@@ -1,8 +1,7 @@
 import useSWR from "swr";
 import { flightsUrlEndpoint, getFlights, IFlightsApi } from "../../api";
+import { ListWrapper } from "../common";
 import SingleFlight from "../SingleFlight";
-
-import styles from "./style.module.css";
 
 const FlightsList = () => {
 	const {
@@ -18,7 +17,7 @@ const FlightsList = () => {
 		content = <p>{error.message}</p>;
 	} else {
 		content = (
-			<div className={styles.Main}>
+			<ListWrapper>
 				{fights?.map((flight: IFlightsApi) => {
 					return (
 						<SingleFlight
@@ -28,7 +27,7 @@ const FlightsList = () => {
 						/>
 					);
 				})}
-			</div>
+			</ListWrapper>
 		);
 	}
 

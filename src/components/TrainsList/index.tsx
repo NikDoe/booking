@@ -4,9 +4,8 @@ import {
 	ItrainsApi,
 	trainsUrlEndpoint as cacheKey,
 } from "../../api";
+import { ListWrapper } from "../common";
 import SingleTrain from "../SingleTrain";
-
-import styles from "./style.module.css";
 
 const TrainsList = () => {
 	const { isLoading, error, data: trains } = useSWR(cacheKey, getTrains);
@@ -18,7 +17,7 @@ const TrainsList = () => {
 		content = <p>{error.message}</p>;
 	} else {
 		content = (
-			<div className={styles.Main}>
+			<ListWrapper>
 				{trains?.map((train: ItrainsApi) => {
 					return (
 						<SingleTrain
@@ -28,7 +27,7 @@ const TrainsList = () => {
 						/>
 					);
 				})}
-			</div>
+			</ListWrapper>
 		);
 	}
 
