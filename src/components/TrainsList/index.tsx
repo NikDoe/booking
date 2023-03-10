@@ -6,6 +6,8 @@ import {
 } from "../../api";
 import SingleTrain from "../SingleTrain";
 
+import styles from "./style.module.css";
+
 const TrainsList = () => {
 	const { isLoading, error, data: trains } = useSWR(cacheKey, getTrains);
 
@@ -15,11 +17,19 @@ const TrainsList = () => {
 	} else if (error) {
 		content = <p>{error.message}</p>;
 	} else {
-		content = trains?.map((train: ItrainsApi) => {
-			return (
-				<SingleTrain key={train.id} to={`${train.id}`} id={train.id} />
-			);
-		});
+		content = (
+			<div className={styles.Main}>
+				{trains?.map((train: ItrainsApi) => {
+					return (
+						<SingleTrain
+							key={train.id}
+							to={`${train.id}`}
+							id={train.id}
+						/>
+					);
+				})}
+			</div>
+		);
 	}
 
 	return <main>{content}</main>;
