@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Layout } from "./common";
+import { Layout } from "./components";
 import { AdminPage, Flights, Hotels, LoginPage, Public, Trains } from "./pages";
 
 function App() {

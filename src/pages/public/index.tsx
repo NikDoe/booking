@@ -12,16 +12,12 @@ const Public: FC = () => {
 	};
 
 	return (
-		<main className={styles.Main}>
-			<form onSubmit={publicFormHandle} className={styles.Form}>
-				<Input placeholder="откуда" />
-				<Input placeholder="куда" />
-				<Input placeholder="дата" />
-				<Button onClick={() => alert("поиск билетов")}>
-					найти билеты
-				</Button>
-			</form>
-		</main>
+		<form onSubmit={publicFormHandle} className={styles.Form}>
+			<Input placeholder="откуда" />
+			<Input placeholder="куда" />
+			<Input placeholder="дата" />
+			<Button onClick={() => alert("поиск билетов")}>найти билеты</Button>
+		</form>
 	);
 };
 

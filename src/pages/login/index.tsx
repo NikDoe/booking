@@ -64,7 +64,7 @@ const LoginPage = () => {
 	};
 
 	return (
-		<main className={styles.Container}>
+		<div className={styles.Container}>
 			<form className={styles.Form} onSubmit={onLoginSubmit}>
 				<div>
 					<FormField
@@ -133,7 +133,7 @@ const LoginPage = () => {
 				/>
 				<Button onClick={() => alert("вы вошли")}>login</Button>
 			</form>
-		</main>
+		</div>
 	);
 };
 
