@@ -6,7 +6,7 @@ export interface IHotelsApi {
 	desciption: string;
 }
 
-export const hotelsUrlEndpoint = "flights";
+export const hotelsUrlEndpoint = "hotels";
 
 export const getHotels = async (): Promise<IHotelsApi[]> => {
 	try {

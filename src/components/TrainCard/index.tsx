@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { ISingleProps } from "../../types";
+import { ItrainsApi } from "../../api";
 import { SingleWrapper } from "../common";
 
-const TrainCard: FC<ISingleProps> = ({ id }) => {
+const TrainCard: FC<ItrainsApi> = ({ id }) => {
 	return (
 		<SingleWrapper>
 			<Link to={`${id}`}>карточка поезда {id}</Link>

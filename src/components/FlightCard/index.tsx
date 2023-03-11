@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { ISingleProps } from "../../types";
+import { IFlightsApi } from "../../api";
 import { SingleWrapper } from "../common";
 
-const FlightCard: FC<ISingleProps> = ({ id }) => {
+const FlightCard: FC<IFlightsApi> = ({ id }) => {
 	return (
 		<SingleWrapper>
 			<Link to={`${id}`}>карточка самолёта {id}</Link>
