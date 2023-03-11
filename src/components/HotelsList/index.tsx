@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { hotelsUrlEndpoint, getHotels, IHotelsApi } from "../../api";
+import { hotelsUrlEndpoint, getHotels } from "../../api";
 import { ListWrapper } from "../common";
 import HotelCard from "../HotelCard";
 
@@ -18,14 +18,8 @@ const HotelsList = () => {
 	} else {
 		content = (
 			<ListWrapper>
-				{hotels?.map((hotel: IHotelsApi) => {
-					return (
-						<HotelCard
-							key={hotel.id}
-							to={`${hotel.id}`}
-							id={hotel.id}
-						/>
-					);
+				{hotels?.map((hotel) => {
+					return <HotelCard key={hotel.id} {...hotel} />;
 				})}
 			</ListWrapper>
 		);

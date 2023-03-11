@@ -1,9 +1,5 @@
 import useSWR from "swr";
-import {
-	getTrains,
-	ItrainsApi,
-	trainsUrlEndpoint as cacheKey,
-} from "../../api";
+import { getTrains, trainsUrlEndpoint as cacheKey } from "../../api";
 import { ListWrapper } from "../common";
 import TrainCard from "../TrainCard";
 
@@ -18,14 +14,8 @@ const TrainsList = () => {
 	} else {
 		content = (
 			<ListWrapper>
-				{trains?.map((train: ItrainsApi) => {
-					return (
-						<TrainCard
-							key={train.id}
-							to={`${train.id}`}
-							id={train.id}
-						/>
-					);
+				{trains?.map((train) => {
+					return <TrainCard key={train.id} {...train} />;
 				})}
 			</ListWrapper>
 		);

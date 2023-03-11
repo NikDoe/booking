@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { ISingleProps } from "../../types";
+import { IHotelsApi } from "../../api";
 import { SingleWrapper } from "../common";
 
-const HotelCard: FC<ISingleProps> = ({ id, to }) => {
+const HotelCard: FC<IHotelsApi> = ({ id }) => {
 	return (
 		<SingleWrapper>
-			<Link to={to}>карточка отеля {id}</Link>
+			<Link to={`${id}`}>карточка отеля {id}</Link>
 		</SingleWrapper>
 	);
 };
