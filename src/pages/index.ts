@@ -6,7 +6,8 @@ const Flight = lazy(() => import("./singleFlight"));
 const Flights = lazy(() => import("./fligts"));
 const Hotel = lazy(() => import("./singleHotel"));
 const Hotels = lazy(() => import("./hotels"));
-const LoginPage = lazy(() => import("./login"));
+const Login = lazy(() => import("./login"));
+const SignUp = lazy(() => import("./singup"));
 const Train = lazy(() => import("./singleTrain"));
 const Trains = lazy(() => import("./trains"));
 
@@ -16,8 +17,9 @@ export {
 	Flights,
 	Hotel,
 	Hotels,
-	LoginPage,
+	Login,
 	Public,
+	SignUp,
 	Train,
 	Trains,
 };

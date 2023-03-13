@@ -6,8 +6,9 @@ import {
 	Flights,
 	Hotel,
 	Hotels,
-	LoginPage,
+	Login,
 	Public,
+	SignUp,
 	Train,
 	Trains,
 } from "./pages";
@@ -17,7 +18,8 @@ function App() {
 		<Routes>
 			<Route path="/" element={<Layout />}>
 				<Route index element={<Public />} />
-				<Route path="login" element={<LoginPage />} />
+				<Route path="login" element={<Login />} />
+				<Route path="signup" element={<SignUp />} />
 				<Route path="flights">
 					<Route index element={<Flights />} />
 					<Route path=":id" element={<Flight />} />

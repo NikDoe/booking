@@ -1,4 +1,5 @@
 import { FormEvent, ChangeEvent, useState, FocusEvent } from "react";
+import { Link } from "react-router-dom";
 import { Button, CheckBox, FormField } from "webli-ui";
 
 import styles from "./login.module.css";
@@ -16,18 +17,6 @@ const validateUsername = (value: string): string | null => {
 const validatePassword = (value: string): string | null => {
 	if (!value) return "обязательное поле";
 	return null;
-};
-
-const loginFormValidateShema = {
-	username: validateUsername,
-	password: validatePassword,
-};
-
-const validateLoginForm = (
-	name: keyof typeof loginFormValidateShema,
-	value: string,
-) => {
-	return loginFormValidateShema[name](value);
 };
 
 const LoginPage = () => {
@@ -63,68 +52,74 @@ const LoginPage = () => {
 		}
 	};
 
+	const handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
+		const username = e.target.value;
+		setFormValues({
+			...formValues,
+			username,
+		});
+
+		const error = validateUsername(username);
+		setFormErors({ ...formErrors, uError: error });
+	};
+
+	const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
+		const password = e.target.value;
+		setFormValues({
+			...formValues,
+			password,
+		});
+
+		const error = validatePassword(password);
+		setFormErors({ ...formErrors, pError: error });
+	};
+
+	const handleIsMyComputer = (e: ChangeEvent<HTMLInputElement>) => {
+		const isMyComputer = e.target.checked;
+		setFormValues({ ...formValues, isMyComputer });
+	};
+
 	return (
 		<form className={styles.Form} onSubmit={onLoginSubmit}>
-			<div>
-				<FormField
-					value={formValues.username}
-					label="login"
-					type="text"
-					name="userName"
-					isFocused={isFocused.userName}
-					isRequired={true}
-					onFocus={handleFocus}
-					onBlur={handleBlur}
-					onChange={(e: ChangeEvent<HTMLInputElement>) => {
-						const username = e.target.value;
-						setFormValues({
-							...formValues,
-							username,
-						});
-
-						const error = validateLoginForm("username", username);
-						setFormErors({ ...formErrors, uError: error });
-					}}
-					{...(!!formErrors.uError && {
-						error: formErrors.uError,
-					})}
-				/>
-			</div>
-			<div>
-				<FormField
-					value={formValues.password}
-					label="password"
-					type="password"
-					name="password"
-					isFocused={isFocused.password}
-					isRequired={true}
-					onFocus={handleFocus}
-					onBlur={handleBlur}
-					onChange={(e: ChangeEvent<HTMLInputElement>) => {
-						const password = e.target.value;
-						setFormValues({
-							...formValues,
-							password,
-						});
-
-						const error = validateLoginForm("password", password);
-						setFormErors({ ...formErrors, pError: error });
-					}}
-					{...(!!formErrors.pError && {
-						error: formErrors.pError,
-					})}
-				/>
-			</div>
+			<FormField
+				value={formValues.username}
+				label="username"
+				type="text"
+				name="userName"
+				isFocused={isFocused.userName}
+				isRequired={true}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				onChange={handleUsername}
+				{...(!!formErrors.uError && {
+					error: formErrors.uError,
+				})}
+			/>
+			<FormField
+				value={formValues.password}
+				label="password"
+				type="password"
+				name="password"
+				isFocused={isFocused.password}
+				isRequired={true}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				onChange={handlePassword}
+				{...(!!formErrors.pError && {
+					error: formErrors.pError,
+				})}
+			/>
 			<CheckBox
 				id="1"
 				label="запомнить вход"
 				isChecked={formValues.isMyComputer}
-				onChange={(e: ChangeEvent<HTMLInputElement>) => {
-					const isMyComputer = e.target.checked;
-					setFormValues({ ...formValues, isMyComputer });
-				}}
+				onChange={handleIsMyComputer}
 			/>
 			<Button onClick={() => alert("вы вошли")}>login</Button>
+
+			<Link className={styles.Signup} to="/signup">
+				sign up
+			</Link>
 		</form>
 	);
 };

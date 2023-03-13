@@ -1,7 +1,6 @@
 .Main {
 	color: var(--font-color);
 	font-size: var(--main-size);
-	text-decoration: none;
 	padding: 10px 15px;
 }
 
