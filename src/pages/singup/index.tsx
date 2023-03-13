@@ -1,45 +1,41 @@
-import { FormEvent, ChangeEvent, useState, FocusEvent } from "react";
+import { useState, FocusEvent, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
-import { Button, CheckBox, FormField } from "webli-ui";
+import { Button, FormField } from "webli-ui";
 
-import styles from "./login.module.css";
+import styles from "./style.module.css";
 
 interface IFormErors {
-	uError: string | null;
-	pError: string | null;
+	uError: string | undefined;
+	pError: string | undefined;
+	r_pError: string | undefined;
 }
 
-const validateUsername = (value: string): string | null => {
+const validateUsername = (value: string): string | undefined => {
 	if (!value) return "обязательное поле";
-	return null;
 };
 
-const validatePassword = (value: string): string | null => {
+const validatePassword = (value: string): string | undefined => {
 	if (!value) return "обязательное поле";
-	return null;
 };
 
-const LoginPage = () => {
+const SingUp = () => {
 	const [formValues, setFormValues] = useState({
 		username: "",
 		password: "",
-		isMyComputer: false,
+		repeat_password: "",
 	});
 
 	const [formErrors, setFormErors] = useState<IFormErors>({
 		uError: "",
 		pError: "",
+		r_pError: "",
 	});
 
 	const [isFocused, setIsFocused] = useState({
 		userName: false,
 		password: false,
+		repeat_password: false,
 	});
-
-	const onLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		alert("вы вошли");
-	};
 
 	const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
 		setIsFocused({ ...isFocused, [e.target.name]: true });
@@ -68,20 +64,40 @@ const LoginPage = () => {
 		const password = e.target.value;
 		setFormValues({
 			...formValues,
-			password,
+			[e.target.name]: password,
 		});
 
 		const error = validatePassword(password);
 		setFormErors({ ...formErrors, pError: error });
 	};
 
-	const handleIsMyComputer = (e: ChangeEvent<HTMLInputElement>) => {
-		const isMyComputer = e.target.checked;
-		setFormValues({ ...formValues, isMyComputer });
+	const handleConfirm = (e: ChangeEvent<HTMLInputElement>) => {
+		const repeat_password = e.target.value;
+		setFormValues({
+			...formValues,
+			repeat_password,
+		});
+
+		const error = validatePassword(repeat_password);
+		setFormErors({ ...formErrors, r_pError: error });
+	};
+
+	const onSignupSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		alert("вы зарегистрированы");
+	};
+
+	const handleErrorMessage = (
+		message: string | undefined,
+	): string | undefined => {
+		if (message) return message;
+
+		if (formValues.password !== formValues.repeat_password)
+			return "пароли не совпадают";
 	};
 
 	return (
-		<form className={styles.Form} onSubmit={onLoginSubmit}>
+		<form className={styles.Form} onSubmit={onSignupSubmit}>
 			<FormField
 				value={formValues.username}
 				label="username"
@@ -92,9 +108,7 @@ const LoginPage = () => {
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 				onChange={handleUsername}
-				{...(!!formErrors.uError && {
-					error: formErrors.uError,
-				})}
+				error={formErrors.uError}
 			/>
 			<FormField
 				value={formValues.password}
@@ -106,23 +120,27 @@ const LoginPage = () => {
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 				onChange={handlePassword}
-				{...(!!formErrors.pError && {
-					error: formErrors.pError,
-				})}
+				error={handleErrorMessage(formErrors.pError)}
 			/>
-			<CheckBox
-				id="1"
-				label="запомнить вход"
-				isChecked={formValues.isMyComputer}
-				onChange={handleIsMyComputer}
+			<FormField
+				value={formValues.repeat_password}
+				label="confirm password"
+				type="password"
+				name="repeat_password"
+				isFocused={isFocused.repeat_password}
+				isRequired={true}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				onChange={handleConfirm}
+				error={handleErrorMessage(formErrors.r_pError)}
 			/>
-			<Button>login</Button>
+			<Button>sign up</Button>
 
-			<Link className={styles.Signup} to="/signup">
-				sign up
+			<Link className={styles.Login} to="/login">
+				log in
 			</Link>
 		</form>
 	);
 };
 
-export default LoginPage;
+export default SingUp;
