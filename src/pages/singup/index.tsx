@@ -1,6 +1,7 @@
 import { useState, FocusEvent, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { Button, FormField } from "webli-ui";
+import { useHandleFocus } from "../../hooks";
 
 import styles from "./style.module.css";
 
@@ -31,23 +32,11 @@ const SingUp = () => {
 		r_pError: "",
 	});
 
-	const [isFocused, setIsFocused] = useState({
+	const { isFocused, handleBlur, handleFocus } = useHandleFocus({
 		userName: false,
 		password: false,
 		repeat_password: false,
 	});
-
-	const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
-		setIsFocused({ ...isFocused, [e.target.name]: true });
-	};
-
-	const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-		if (e.target.value !== "") {
-			setIsFocused({ ...isFocused, [e.target.name]: true });
-		} else {
-			setIsFocused({ ...isFocused, [e.target.name]: false });
-		}
-	};
 
 	const handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
 		const username = e.target.value;

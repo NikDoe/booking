@@ -1,6 +1,7 @@
 import { FormEvent, ChangeEvent, useState, FocusEvent } from "react";
 import { Link } from "react-router-dom";
 import { Button, CheckBox, FormField } from "webli-ui";
+import { useHandleFocus } from "../../hooks";
 
 import styles from "./login.module.css";
 
@@ -31,7 +32,7 @@ const LoginPage = () => {
 		pError: "",
 	});
 
-	const [isFocused, setIsFocused] = useState({
+	const { handleBlur, handleFocus, isFocused } = useHandleFocus({
 		userName: false,
 		password: false,
 	});
@@ -39,18 +40,6 @@ const LoginPage = () => {
 	const onLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		alert("вы вошли");
-	};
-
-	const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
-		setIsFocused({ ...isFocused, [e.target.name]: true });
-	};
-
-	const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-		if (e.target.value !== "") {
-			setIsFocused({ ...isFocused, [e.target.name]: true });
-		} else {
-			setIsFocused({ ...isFocused, [e.target.name]: false });
-		}
 	};
 
 	const handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
