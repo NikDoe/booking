@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { IHotelsApi } from "../../api";
-import { SingleWrapper } from "../common";
+import { IHotelsApi } from "api";
+import { SingleWrapper } from "components/common";
 
 const HotelCard: FC<IHotelsApi> = ({ id }) => {
 	return (

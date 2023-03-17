@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { hotelsUrlEndpoint, getHotels } from "../../api";
-import { ListWrapper } from "../common";
-import HotelCard from "../HotelCard";
+import { ListWrapper } from "components/common";
+import { HotelCard } from "components";
 
 const HotelsList = () => {
 	const {

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { IFlightsApi } from "../../api";
-import { SingleWrapper } from "../common";
+import { IFlightsApi } from "api";
+import { SingleWrapper } from "components/common";
 
 const FlightCard: FC<IFlightsApi> = ({ id }) => {
 	return (

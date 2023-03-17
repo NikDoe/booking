@@ -1,7 +1,7 @@
-import { FormEvent, ChangeEvent, useState, FocusEvent } from "react";
+import { FormEvent, ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, CheckBox, FormField } from "webli-ui";
-import { useHandleFocus } from "../../hooks";
+import { useHandleFocus } from "hooks";
 
 import styles from "./login.module.css";
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { HotelsList } from "../../components";
-import { useTitle } from "../../hooks";
+import { HotelsList } from "components";
+import { useTitle } from "hooks";
 
 const Hotels = () => {
 	useTitle("забронировать билеты в отель онлайн");

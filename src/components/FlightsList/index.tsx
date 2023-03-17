@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { flightsUrlEndpoint, getFlights } from "../../api";
-import { ListWrapper } from "../common";
-import FlightCard from "../FlightCard";
+import { ListWrapper } from "components/common";
+import { FlightCard } from "components";
 
 const FlightsList = () => {
 	const {

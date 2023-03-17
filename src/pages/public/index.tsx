@@ -1,5 +1,5 @@
 import { FC, FormEvent } from "react";
-import { useTitle } from "../../hooks";
+import { useTitle } from "hooks";
 
 import { Button, Input } from "webli-ui";
 

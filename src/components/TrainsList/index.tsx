@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { getTrains, trainsUrlEndpoint as cacheKey } from "../../api";
-import { ListWrapper } from "../common";
-import TrainCard from "../TrainCard";
+import { ListWrapper } from "components/common";
+import { TrainCard } from "components";
 
 const TrainsList = () => {
 	const { isLoading, error, data: trains } = useSWR(cacheKey, getTrains);

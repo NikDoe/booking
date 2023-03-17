@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { FlightsList } from "../../components";
-import { useTitle } from "../../hooks";
+import { FlightsList } from "components";
+import { useTitle } from "hooks";
 
 const Flights = () => {
 	useTitle("забронировать билеты на самолёт онлайн");

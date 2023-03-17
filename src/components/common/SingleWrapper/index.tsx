@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IWrapperProps } from "../../../types";
+import { IWrapperProps } from "types";
 
 import styles from "./style.module.css";
 
