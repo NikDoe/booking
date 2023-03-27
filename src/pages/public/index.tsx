@@ -1,9 +1,8 @@
 import { FC, FormEvent } from "react";
 import { useTitle } from "hooks";
 
-import { Button, Input } from "webli-ui";
-
 import styles from "./styles.module.css";
+import { Button, Input } from "webli-ui";
 
 const Public: FC = () => {
 	useTitle("Бронирование билетов | номеров онлайн");

@@ -1,11 +1,14 @@
-import { CustomNavLink } from "components";
+import { CustomNavLink, ProfileMenu } from "components";
+
+import styles from "./nav.module.css";
 
 const Nav = () => {
 	return (
-		<nav>
+		<nav className={styles.Main}>
 			<CustomNavLink to="trains">trains</CustomNavLink>
 			<CustomNavLink to="flights">flights</CustomNavLink>
 			<CustomNavLink to="hotels">hotels</CustomNavLink>
+			<ProfileMenu />
 		</nav>
 	);
 };
