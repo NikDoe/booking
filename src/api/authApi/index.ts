@@ -1,13 +1,13 @@
 import { api } from "api/configApi";
-import { HTTPError } from "ky";
 
-export interface ISignupForm {
+export interface ISignupFormValues {
 	username: string;
 	email: string;
 	password: string;
+	confirm: string;
 }
 
-export interface IUserResponse {
+export interface IUser {
 	id: number;
 	username: string;
 	email: string;
@@ -15,30 +15,18 @@ export interface IUserResponse {
 
 export interface ISignupResponse {
 	message?: string;
-	data?: IUserResponse;
+	data?: IUser;
 	error?: string;
 }
 
 export const registerUrlEndpoint = "users/register";
 
-export const addNewUser = async ({
-	username,
-	password,
-	email,
-}: ISignupForm): Promise<ISignupResponse> => {
-	try {
-		return await api
-			.post(registerUrlEndpoint, {
-				json: { username, password, email },
-			})
-			.json<ISignupResponse>();
-	} catch (error) {
-		const defaultError = "Упс, что-то пошло не так";
-
-		if (error instanceof HTTPError) {
-			return await error.response.json();
-		}
-
-		return { error: defaultError };
-	}
+export const addNewUser = async (
+	data: ISignupFormValues,
+): Promise<ISignupResponse> => {
+	return await api
+		.post(registerUrlEndpoint, {
+			json: data,
+		})
+		.json<ISignupResponse>();
 };

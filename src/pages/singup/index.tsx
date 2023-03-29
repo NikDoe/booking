@@ -1,133 +1,95 @@
-import { useState, ChangeEvent, FormEvent, FocusEvent } from "react";
 import { Link } from "react-router-dom";
 import { Button, FormField } from "webli-ui";
 import { useHandleFocus } from "hooks";
 import { useSWRConfig } from "swr";
+import {
+	addNewUser,
+	ISignupFormValues,
+	ISignupResponse,
+	registerUrlEndpoint,
+} from "api/authApi";
+import { useForm } from "react-hook-form";
+import { HTTPError } from "ky";
+import { toast, ToastContainer } from "react-toastify";
+import { toastConfig } from "config";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import styles from "./style.module.css";
-import { addNewUser, registerUrlEndpoint } from "api/authApi";
 
-interface IFormErors {
-	usernameError: string | undefined;
-	emailError: string | undefined;
-	passwordError: string | undefined;
-	confirmError: string | undefined;
-}
-
-const validateField = (value: string): string | undefined => {
-	if (!value) return "обязательное поле";
-};
+const schema = yup.object().shape({
+	username: yup
+		.string()
+		.required("Обязательное поле")
+		.min(2, "Минимальная длинна 2 символа")
+		.max(20, "Максимальная длинна 20 символов")
+		.matches(/^([^0-9]*)$/, "Имя не должно содержать цифры"),
+	email: yup.string().required("Обязательное поле").email("Неверный email"),
+	password: yup
+		.string()
+		.required("Обязательное поле")
+		.min(6, "Минимальная длинна 6 символов"),
+	confirm: yup
+		.string()
+		.required("Обязательное поле")
+		.min(6, "Минимальная длинна 6 символов")
+		.oneOf([yup.ref("password")], "Пароли не сопадают"),
+});
 
 const SingUp = () => {
-	const { mutate } = useSWRConfig();
-
-	const [formValues, setFormValues] = useState({
-		username: "",
-		email: "",
-		password: "",
-		confirm: "",
-	});
-
-	const [formErrors, setFormErors] = useState<IFormErors>({
-		usernameError: "",
-		emailError: "",
-		passwordError: "",
-		confirmError: "",
-	});
-
 	const { isFocused, handleBlur, handleFocus } = useHandleFocus({
-		userName: false,
+		username: false,
 		email: false,
 		password: false,
 		confirm: false,
 	});
 
-	const handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
-		const username = e.target.value;
-		setFormValues({
-			...formValues,
-			username,
-		});
+	const { mutate } = useSWRConfig();
 
-		const error = validateField(username);
-		setFormErors({ ...formErrors, usernameError: error });
-	};
+	const {
+		handleSubmit,
+		register,
+		reset,
+		formState: { errors },
+	} = useForm<ISignupFormValues>({
+		resolver: yupResolver(schema),
+	});
 
-	const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
-		const email = e.target.value;
-		setFormValues({
-			...formValues,
-			email,
-		});
-
-		const error = validateField(email);
-		setFormErors({ ...formErrors, emailError: error });
-	};
-
-	const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
-		const password = e.target.value;
-		setFormValues({
-			...formValues,
-			password,
-		});
-
-		const error = validateField(password);
-		setFormErors({ ...formErrors, passwordError: error });
-	};
-
-	const handleConfirm = (e: ChangeEvent<HTMLInputElement>) => {
-		const confirm = e.target.value;
-		setFormValues({
-			...formValues,
-			confirm,
-		});
-
-		const error = validateField(confirm);
-		setFormErors({ ...formErrors, confirmError: error });
-	};
-
-	const onSignupSubmit = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-
-		if (
-			!formErrors.usernameError &&
-			!formErrors.emailError &&
-			!formErrors.passwordError &&
-			!formErrors.confirmError
-		) {
-			const { username, password, email } = formValues;
+	const onSubmit = handleSubmit(async (data) => {
+		try {
 			const response = await mutate(
 				registerUrlEndpoint,
-				addNewUser({ username, password, email }),
+				addNewUser(data),
 			);
+
+			reset();
+
+			toast.success(response?.message, toastConfig);
+		} catch (error) {
+			if (error instanceof HTTPError) {
+				const errorResponse: Pick<ISignupResponse, "error"> =
+					await error.response.json();
+				const errorMessage = errorResponse.error?.split(",")[0];
+				toast.error(errorMessage, toastConfig);
+			}
 		}
-	};
-
-	const handleErrorMessage = (
-		message: string | undefined,
-	): string | undefined => {
-		if (message) return message;
-
-		if (formValues.password !== formValues.confirm)
-			return "пароли не совпадают";
-	};
+	});
 
 	return (
-		<form className={styles.Form} onSubmit={onSignupSubmit}>
+		<form className={styles.Form} onSubmit={onSubmit}>
 			<FormField
-				value={formValues.username}
-				label="username"
+				register={register}
+				label="имя пользователя"
 				type="text"
-				name="userName"
-				isFocused={isFocused.userName}
+				name="username"
+				isFocused={isFocused.username}
 				isRequired={true}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
-				onChange={handleUsername}
-				error={formErrors.usernameError}
+				error={errors.username?.message}
 			/>
 			<FormField
-				value={formValues.email}
+				register={register}
 				label="email"
 				type="text"
 				name="email"
@@ -135,37 +97,36 @@ const SingUp = () => {
 				isRequired={true}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
-				onChange={handleEmail}
-				error={formErrors.emailError}
+				error={errors.email?.message}
 			/>
 			<FormField
-				value={formValues.password}
-				label="password"
+				register={register}
+				label="пароль"
 				type="password"
 				name="password"
 				isFocused={isFocused.password}
 				isRequired={true}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
-				onChange={handlePassword}
-				error={handleErrorMessage(formErrors.passwordError)}
+				error={errors.password?.message}
 			/>
 			<FormField
-				value={formValues.confirm}
-				label="confirm password"
+				register={register}
+				label="подтвердите пароль"
 				type="password"
 				name="confirm"
 				isFocused={isFocused.confirm}
 				isRequired={true}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
-				onChange={handleConfirm}
-				error={handleErrorMessage(formErrors.confirmError)}
+				error={errors.confirm?.message}
 			/>
-			<Button>sign up</Button>
+			<Button type="submit">Регистрация</Button>
+			<ToastContainer />
 
+			<p className={styles.Text}>Уже зарегистрированы?</p>
 			<Link className={styles.Login} to="/login">
-				log in
+				Войти здесь
 			</Link>
 		</form>
 	);
