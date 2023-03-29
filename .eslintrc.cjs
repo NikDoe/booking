@@ -24,5 +24,11 @@ module.exports = {
 		"react/react-in-jsx-scope": "off",
 		"linebreak-style": 0,
 		"no-console": ["error"],
+		"prettier/prettier": [
+			"error",
+			{
+				endOfLine: "auto",
+			},
+		],
 	},
 };
