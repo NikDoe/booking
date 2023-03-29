@@ -15,10 +15,11 @@
 		"ky": "^0.33.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-hook-form": "^7.43.8",
 		"react-router-dom": "^6.6.1",
 		"react-transition-group": "^4.4.5",
 		"swr": "^2.0.3",
-		"webli-ui": "^0.9.8"
+		"webli-ui": "^0.9.9"
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.26",
@@ -30,6 +31,7 @@
 		"clsx": "^1.2.1",
 		"eslint": "^8.33.0",
 		"eslint-config-prettier": "^8.6.0",
+		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.32.2",
 		"husky": "^8.0.0",
 		"lint-staged": "^13.1.0",
