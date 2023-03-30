@@ -4,10 +4,11 @@ import { useHandleFocus } from "hooks";
 import { useSWRConfig } from "swr";
 import {
 	addNewUser,
+	EMAIL_REGEX,
 	ISignupFormValues,
 	ISignupResponse,
 	registerUrlEndpoint,
-} from "api/authApi";
+} from "api";
 import { useForm } from "react-hook-form";
 import { HTTPError } from "ky";
 import { toast, ToastContainer } from "react-toastify";
@@ -24,7 +25,10 @@ const schema = yup.object().shape({
 		.min(2, "Минимальная длинна 2 символа")
 		.max(20, "Максимальная длинна 20 символов")
 		.matches(/^([^0-9]*)$/, "Имя не должно содержать цифры"),
-	email: yup.string().required("Обязательное поле").email("Неверный email"),
+	email: yup
+		.string()
+		.required("Обязательное поле")
+		.matches(EMAIL_REGEX, "Неверный формат записи email"),
 	password: yup
 		.string()
 		.required("Обязательное поле")

@@ -1,4 +1,11 @@
 import {
+	addNewUser,
+	EMAIL_REGEX,
+	ISignupFormValues,
+	ISignupResponse,
+	registerUrlEndpoint,
+} from "./authApi";
+import {
 	addFlight,
 	deleteFlight,
 	flightsUrlEndpoint,
@@ -28,6 +35,7 @@ import {
 export {
 	addFlight,
 	addHotel,
+	addNewUser,
 	addTrain,
 	deleteFlight,
 	deleteHotel,
@@ -37,9 +45,18 @@ export {
 	getTrains,
 	flightsUrlEndpoint,
 	hotelsUrlEndpoint,
+	registerUrlEndpoint,
 	trainsUrlEndpoint,
 	updateFlight,
 	updateHotel,
 	updateTrain,
+	EMAIL_REGEX,
 };
-export type { IFlightsApi, IHotelsApi, ItrainsApi };
+
+export type {
+	IFlightsApi,
+	IHotelsApi,
+	ItrainsApi,
+	ISignupFormValues,
+	ISignupResponse,
+};
