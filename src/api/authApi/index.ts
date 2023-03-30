@@ -10,6 +10,11 @@ export interface ISignupFormValues {
 	confirm: string;
 }
 
+export interface ILoginFormValues {
+	email: string;
+	password: string;
+}
+
 export interface IUser {
 	id: number;
 	username: string;
@@ -22,7 +27,14 @@ export interface ISignupResponse {
 	error?: string;
 }
 
+export interface ILoginResponse {
+	message?: string;
+	token?: string;
+	error?: string;
+}
+
 export const registerUrlEndpoint = "users/register";
+export const loginUrlEndpoint = "users/login";
 
 export const addNewUser = async (
 	data: ISignupFormValues,
@@ -32,4 +44,12 @@ export const addNewUser = async (
 			json: data,
 		})
 		.json<ISignupResponse>();
+};
+
+export const loginUser = async (
+	data: ILoginFormValues,
+): Promise<ILoginResponse> => {
+	return await api
+		.post(loginUrlEndpoint, { json: data })
+		.json<ILoginResponse>();
 };

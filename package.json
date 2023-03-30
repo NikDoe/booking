@@ -21,7 +21,7 @@
 		"react-toastify": "^9.1.2",
 		"react-transition-group": "^4.4.5",
 		"swr": "^2.0.3",
-		"webli-ui": "^0.9.11",
+		"webli-ui": "^0.9.13",
 		"yup": "^1.0.2"
 	},
 	"devDependencies": {

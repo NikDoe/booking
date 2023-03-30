@@ -1,114 +1,109 @@
-import { FormEvent, ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, CheckBox, FormField } from "webli-ui";
 import { useHandleFocus } from "hooks";
+import { useForm } from "react-hook-form";
+import {
+	EMAIL_REGEX,
+	ILoginFormValues,
+	ILoginResponse,
+	loginUrlEndpoint,
+	loginUser,
+} from "api";
+import { useSWRConfig } from "swr";
+import { HTTPError } from "ky";
+import { toast, ToastContainer } from "react-toastify";
+import { toastConfig } from "config";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import styles from "./login.module.css";
 
-interface IFormErors {
-	uError: string | null;
-	pError: string | null;
-}
-
-const validateUsername = (value: string): string | null => {
-	if (!value) return "обязательное поле";
-	return null;
-};
-
-const validatePassword = (value: string): string | null => {
-	if (!value) return "обязательное поле";
-	return null;
-};
+const schema = yup.object().shape({
+	email: yup
+		.string()
+		.required("Обязательное поле")
+		.matches(EMAIL_REGEX, "Неверный формат записи email"),
+	password: yup.string().required("Обязательное поле"),
+});
 
 const LoginPage = () => {
-	const [formValues, setFormValues] = useState({
-		username: "",
-		password: "",
-		isMyComputer: false,
-	});
-
-	const [formErrors, setFormErors] = useState<IFormErors>({
-		uError: "",
-		pError: "",
-	});
-
 	const { handleBlur, handleFocus, isFocused } = useHandleFocus({
-		userName: false,
+		email: false,
 		password: false,
 	});
 
-	const onLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		alert("вы вошли");
-	};
+	const { mutate } = useSWRConfig();
 
-	const handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
-		const username = e.target.value;
-		setFormValues({
-			...formValues,
-			username,
-		});
+	const {
+		handleSubmit,
+		register,
+		reset,
+		formState: { errors },
+	} = useForm<ILoginFormValues>({
+		resolver: yupResolver(schema),
+	});
 
-		const error = validateUsername(username);
-		setFormErors({ ...formErrors, uError: error });
-	};
+	const onSubmit = handleSubmit(async (data) => {
+		try {
+			const response = await mutate(loginUrlEndpoint, loginUser(data));
 
-	const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
-		const password = e.target.value;
-		setFormValues({
-			...formValues,
-			password,
-		});
+			reset();
 
-		const error = validatePassword(password);
-		setFormErors({ ...formErrors, pError: error });
-	};
+			toast.success(response?.message, toastConfig);
+		} catch (error) {
+			if (error instanceof HTTPError) {
+				const errorResponse: Pick<ILoginResponse, "error"> =
+					await error.response.json();
+				const errorMessage = errorResponse.error?.split(",")[0];
+				toast.error(errorMessage, toastConfig);
+			}
+		}
+	});
+
+	const [isChecked, setIsChecked] = useState(false);
 
 	const handleIsMyComputer = (e: ChangeEvent<HTMLInputElement>) => {
-		const isMyComputer = e.target.checked;
-		setFormValues({ ...formValues, isMyComputer });
+		setIsChecked(e.target.checked);
 	};
 
 	return (
-		<form className={styles.Form} onSubmit={onLoginSubmit}>
+		<form className={styles.Form} onSubmit={onSubmit}>
 			<FormField
-				value={formValues.username}
-				label="username"
+				register={register}
+				label="email"
 				type="text"
-				name="userName"
-				isFocused={isFocused.userName}
+				name="email"
+				isFocused={isFocused.email}
 				isRequired={true}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
-				onChange={handleUsername}
-				{...(!!formErrors.uError && {
-					error: formErrors.uError,
-				})}
+				error={errors.email?.message}
 			/>
 			<FormField
-				value={formValues.password}
-				label="password"
+				register={register}
+				label="пароль"
 				type="password"
 				name="password"
 				isFocused={isFocused.password}
 				isRequired={true}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
-				onChange={handlePassword}
-				{...(!!formErrors.pError && {
-					error: formErrors.pError,
-				})}
+				error={errors.password?.message}
 			/>
 			<CheckBox
+				name="isMyComputer"
 				id="1"
 				label="запомнить вход"
-				isChecked={formValues.isMyComputer}
+				isChecked={isChecked}
 				onChange={handleIsMyComputer}
 			/>
-			<Button>login</Button>
+			<Button type="submit">Войти</Button>
+			<ToastContainer />
 
+			<p className={styles.Text}>Нет аккаунта?</p>
 			<Link className={styles.Signup} to="/signup">
-				sign up
+				Регистрация
 			</Link>
 		</form>
 	);

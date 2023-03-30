@@ -1,8 +1,12 @@
 import {
 	addNewUser,
 	EMAIL_REGEX,
+	ILoginFormValues,
+	ILoginResponse,
 	ISignupFormValues,
 	ISignupResponse,
+	loginUrlEndpoint,
+	loginUser,
 	registerUrlEndpoint,
 } from "./authApi";
 import {
@@ -45,6 +49,8 @@ export {
 	getTrains,
 	flightsUrlEndpoint,
 	hotelsUrlEndpoint,
+	loginUrlEndpoint,
+	loginUser,
 	registerUrlEndpoint,
 	trainsUrlEndpoint,
 	updateFlight,
@@ -56,6 +62,8 @@ export {
 export type {
 	IFlightsApi,
 	IHotelsApi,
+	ILoginFormValues,
+	ILoginResponse,
 	ItrainsApi,
 	ISignupFormValues,
 	ISignupResponse,
