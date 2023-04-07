@@ -33,8 +33,8 @@ export interface ILoginResponse {
 	error?: string;
 }
 
-export const registerUrlEndpoint = "users/register";
-export const loginUrlEndpoint = "users/login";
+export const registerUrlEndpoint = "auth/registration";
+export const loginUrlEndpoint = "auth/login";
 
 export const addNewUser = async (
 	data: ISignupFormValues,
