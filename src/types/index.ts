@@ -8,3 +8,8 @@ export interface ISingleProps {
 export interface IWrapperProps {
 	children: ReactNode;
 }
+
+export enum Role {
+	User = "user",
+	Admin = "admin",
+}

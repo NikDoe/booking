@@ -92,7 +92,6 @@ const LoginPage = () => {
 				error={errors.password?.message}
 			/>
 			<CheckBox
-				name="isMyComputer"
 				id="1"
 				label="запомнить вход"
 				isChecked={isChecked}
