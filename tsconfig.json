@@ -19,6 +19,8 @@
 		"paths": {
 			"api/*": ["api/*"],
 			"components/*": ["components/*"],
+			"config/*": ["config/*"],
+			"context/*": ["context/*"],
 			"hooks/*": ["hooks/*"],
 			"pages/*": ["pages/*"],
 			"types/*": ["types/*"]

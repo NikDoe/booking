@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, CheckBox, FormField } from "webli-ui";
-import { useHandleFocus } from "hooks";
+import { useAuthToken, useHandleFocus } from "hooks";
 import { useForm } from "react-hook-form";
 import {
 	EMAIL_REGEX,
@@ -44,9 +44,15 @@ const LoginPage = () => {
 		resolver: yupResolver(schema),
 	});
 
+	const { setToken } = useAuthToken();
+
 	const onSubmit = handleSubmit(async (data) => {
 		try {
 			const response = await mutate(loginUrlEndpoint, loginUser(data));
+
+			if (response?.token) {
+				setToken(response.token);
+			}
 
 			reset();
 
