@@ -12,13 +12,13 @@ const enum REDUCER_ACTION_TYPE {
 
 type ReducerAction = {
 	type: REDUCER_ACTION_TYPE;
-	payload?: string;
+	payload?: string | null;
 };
 
 const reducer = (state: StateType, action: ReducerAction): StateType => {
 	switch (action.type) {
 		case REDUCER_ACTION_TYPE.SET_TOKEN:
-			return { ...state, token: action.payload ?? "" };
+			return { ...state, token: action.payload ?? null };
 
 		default:
 			throw new Error();
@@ -29,7 +29,7 @@ const useAuthContext = (initState: StateType) => {
 	const [state, dispatch] = useReducer(reducer, initState);
 
 	const setToken = useCallback(
-		(token: string) =>
+		(token: string | null) =>
 			dispatch({ type: REDUCER_ACTION_TYPE.SET_TOKEN, payload: token }),
 		[],
 	);

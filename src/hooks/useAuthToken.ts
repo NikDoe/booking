@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 type UseAuthTokenType = {
 	token: string | null;
-	setToken: (token: string) => void;
+	setToken: (token: string | null) => void;
 };
 
 const useAuthToken = (): UseAuthTokenType => {

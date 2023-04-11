@@ -1,7 +1,6 @@
-import { ILoginResponse, loginUrlEndpoint } from "api";
 import jwtDecode from "jwt-decode";
-import useSWR from "swr";
 import { Role } from "types";
+import useAuthToken from "./useAuthToken";
 
 type UserRoles = {
 	value: string;
@@ -17,14 +16,13 @@ interface IDecodedUser {
 }
 
 const useAuth = () => {
-	const { data } = useSWR<ILoginResponse>(loginUrlEndpoint);
+	const { token } = useAuthToken();
 
 	let isAdmin = false;
 
-	if (data?.token) {
-		const { username, avatar, email, roles } = jwtDecode<IDecodedUser>(
-			data.token,
-		);
+	if (token) {
+		const { username, avatar, email, roles } =
+			jwtDecode<IDecodedUser>(token);
 
 		isAdmin = roles.map((role) => role.value).includes(Role.Admin);
 
