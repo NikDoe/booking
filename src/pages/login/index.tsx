@@ -12,7 +12,7 @@ import {
 } from "api";
 import { useSWRConfig } from "swr";
 import { HTTPError } from "ky";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { toastConfig } from "config";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -53,6 +53,8 @@ const LoginPage = () => {
 			if (response?.token) {
 				setToken(response.token);
 			}
+
+			localStorage.setItem("auth", "true");
 
 			reset();
 
@@ -104,7 +106,6 @@ const LoginPage = () => {
 				onChange={handleIsMyComputer}
 			/>
 			<Button type="submit">Войти</Button>
-			<ToastContainer />
 
 			<p className={styles.Text}>Нет аккаунта?</p>
 			<Link className={styles.Signup} to="/signup">

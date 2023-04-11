@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Header";
+import { ToastContainer } from "react-toastify";
 
 import styles from "./layout.module.css";
 
@@ -14,6 +15,7 @@ const Layout = () => {
 				</Suspense>
 			</main>
 			<footer></footer>
+			<ToastContainer />
 		</div>
 	);
 };

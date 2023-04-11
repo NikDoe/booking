@@ -11,7 +11,7 @@ import {
 } from "api";
 import { useForm } from "react-hook-form";
 import { HTTPError } from "ky";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { toastConfig } from "config";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -126,7 +126,6 @@ const SingUp = () => {
 				error={errors.confirm?.message}
 			/>
 			<Button type="submit">Регистрация</Button>
-			<ToastContainer />
 
 			<p className={styles.Text}>Уже зарегистрированы?</p>
 			<Link className={styles.Login} to="/login">
