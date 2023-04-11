@@ -1,15 +1,22 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { Avatar, DropDown } from "webli-ui";
 import { CustomNavLink } from "components";
+import { useAuth, useAuthToken } from "hooks";
+import { useSWRConfig } from "swr";
+import { logout, logouthUrlEndpoint } from "api/authApi";
+import { HTTPError } from "ky";
+import { toast } from "react-toastify";
+import { toastConfig } from "config";
 
 import styles from "./styles.module.css";
-import { useAuth } from "hooks";
 
 const ProfileMenu: FC = () => {
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 	const refToggleDropDown = useRef<HTMLDivElement>(null);
 
 	const { avatar, isAdmin } = useAuth();
+	const { mutate } = useSWRConfig();
+	const { setToken } = useAuthToken();
 
 	useEffect(() => {
 		window.addEventListener("click", handleClickOutsideDropDown);
@@ -35,6 +42,20 @@ const ProfileMenu: FC = () => {
 		setIsDropDownOpen((prevState) => !prevState);
 	};
 
+	const handleLogout = async () => {
+		try {
+			const response = await mutate(logouthUrlEndpoint, logout);
+			localStorage.removeItem("auth");
+			setToken(null);
+			toast.success(response?.message, toastConfig);
+		} catch (error) {
+			if (error instanceof HTTPError) {
+				const errorResponse = await error.response.json();
+				toast.error(errorResponse.error);
+			}
+		}
+	};
+
 	return (
 		<div className={styles.Main} ref={refToggleDropDown}>
 			<Avatar onClick={handleToggleDropDown} title={avatar} />
@@ -50,7 +71,9 @@ const ProfileMenu: FC = () => {
 				)}
 				{avatar && (
 					<>
-						<CustomNavLink to="/">выйти</CustomNavLink>
+						<CustomNavLink to="/" onClick={handleLogout}>
+							выйти
+						</CustomNavLink>
 					</>
 				)}
 			</DropDown>
