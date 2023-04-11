@@ -12,8 +12,20 @@ import {
 	Train,
 	Trains,
 } from "./pages";
+import { useAuthToken } from "./hooks";
+import { useSWRConfig } from "swr";
+import { getNewAccessToken, refreshUrlEndpoint } from "api/authApi";
 
 function App() {
+	const { token, setToken } = useAuthToken();
+	const { mutate } = useSWRConfig();
+
+	if (!token && localStorage.getItem("auth")) {
+		mutate(refreshUrlEndpoint, getNewAccessToken).then((token) => {
+			if (token) setToken(token);
+		});
+	}
+
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>

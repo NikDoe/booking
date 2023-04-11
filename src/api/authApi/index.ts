@@ -35,6 +35,8 @@ export interface ILoginResponse {
 
 export const registerUrlEndpoint = "auth/registration";
 export const loginUrlEndpoint = "auth/login";
+export const refreshUrlEndpoint = "auth/refresh";
+export const logouthUrlEndpoint = "auth/logout";
 
 export const addNewUser = async (
 	data: ISignupFormValues,
@@ -52,4 +54,15 @@ export const loginUser = async (
 	return await api
 		.post(loginUrlEndpoint, { json: data })
 		.json<ILoginResponse>();
+};
+
+export const getNewAccessToken = async (): Promise<string> => {
+	const { token } = await api
+		.get(refreshUrlEndpoint)
+		.json<{ token: string }>();
+	return token;
+};
+
+export const logout = async (): Promise<{ message: string }> => {
+	return await api.post(logouthUrlEndpoint).json<{ message: string }>();
 };
