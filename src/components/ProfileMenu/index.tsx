@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { toastConfig } from "config";
 
 import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
 
 const ProfileMenu: FC = () => {
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -71,9 +72,13 @@ const ProfileMenu: FC = () => {
 				)}
 				{avatar && (
 					<>
-						<CustomNavLink to="/" onClick={handleLogout}>
+						<Link
+							className={styles.Logout}
+							to="/"
+							onClick={handleLogout}
+						>
 							выйти
-						</CustomNavLink>
+						</Link>
 					</>
 				)}
 			</DropDown>
