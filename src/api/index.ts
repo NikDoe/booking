@@ -35,7 +35,7 @@ import {
 	updateTrain,
 	deleteTrain,
 } from "./trainsApi";
-import { useUsers } from "./usersApi";
+import { useGetUsers } from "./usersApi";
 
 export {
 	addFlight,
@@ -57,7 +57,7 @@ export {
 	updateFlight,
 	updateHotel,
 	updateTrain,
-	useUsers,
+	useGetUsers,
 	EMAIL_REGEX,
 };
 

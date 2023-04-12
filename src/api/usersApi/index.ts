@@ -3,13 +3,26 @@ import { useRefreshWhenForbidden } from "hooks";
 import useAuthToken from "hooks/useAuthToken";
 import useSWR from "swr";
 
+interface IUserRole {
+	value: string;
+	description: string;
+}
+
+interface IUser {
+	id: number;
+	username: string;
+	avatar: string;
+	email: string;
+	roles: IUserRole[];
+}
+
 interface IUsersResponse {
 	message?: string;
-	data?: { username: string }[];
+	data?: IUser[];
 	error: string;
 }
 
-export const useUsers = () => {
+export const useGetUsers = () => {
 	const { token } = useAuthToken();
 
 	const { refresh } = useRefreshWhenForbidden();
