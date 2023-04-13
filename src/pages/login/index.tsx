@@ -17,7 +17,7 @@ import { toastConfig } from "config";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import styles from "./login.module.css";
+import styles from "./styles.module.css";
 
 const schema = yup.object().shape({
 	email: yup

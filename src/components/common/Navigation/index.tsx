@@ -1,6 +1,6 @@
 import { CustomNavLink, ProfileMenu } from "components";
 
-import styles from "./nav.module.css";
+import styles from "./styles.module.css";
 
 const Nav = () => {
 	return (

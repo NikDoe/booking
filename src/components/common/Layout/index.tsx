@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../Header";
 import { ToastContainer } from "react-toastify";
 
-import styles from "./layout.module.css";
+import styles from "./styles.module.css";
 
 const Layout = () => {
 	return (

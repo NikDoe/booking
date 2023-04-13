@@ -5,6 +5,8 @@ import HotelCard from "./HotelCard";
 import CustomNavLink from "./NavLink";
 import TrainCard from "./TrainCard";
 import ProfileMenu from "./ProfileMenu";
+import Logout from "./Logout";
+import ProfileMenuLinks from "./ProfileMenuLinks";
 
 const FlightsList = lazy(() => import("./FlightsList"));
 const HotelsList = lazy(() => import("./HotelsList"));
@@ -18,8 +20,10 @@ export {
 	HotelCard,
 	HotelsList,
 	Layout,
+	Logout,
 	Header,
 	Nav,
+	ProfileMenuLinks,
 	TrainCard,
 	TrainsList,
 };

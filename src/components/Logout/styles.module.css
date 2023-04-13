@@ -1,0 +1,5 @@
+.Logout {
+	color: var(--font-color);
+	font-size: var(--main-size);
+	padding: 15px 20px;
+}

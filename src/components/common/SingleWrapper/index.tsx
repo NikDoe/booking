@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { IWrapperProps } from "types";
 
-import styles from "./style.module.css";
+import styles from "./styles.module.css";
 
 const SingleWrapper: FC<IWrapperProps> = ({ children, ...props }) => {
 	return (

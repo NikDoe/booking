@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { FC, MouseEventHandler, ReactNode } from "react";
 import { Link, useMatch } from "react-router-dom";
 
-import styles from "./style.module.css";
+import styles from "./styles.module.css";
 
 interface ICustomNavLinkProps {
 	children: ReactNode;
