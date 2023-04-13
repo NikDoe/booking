@@ -7,6 +7,7 @@ import {
 	Hotel,
 	Hotels,
 	Login,
+	ProfilePage,
 	Public,
 	SignUp,
 	Train,
@@ -32,6 +33,8 @@ function App() {
 				<Route index element={<Public />} />
 				<Route path="login" element={<Login />} />
 				<Route path="signup" element={<SignUp />} />
+				<Route path="admin" element={<AdminPage />} />
+				<Route path="profile" element={<ProfilePage />} />
 				<Route path="flights">
 					<Route index element={<Flights />} />
 					<Route path=":id" element={<Flight />} />
@@ -43,9 +46,6 @@ function App() {
 				<Route path="hotels">
 					<Route index element={<Hotels />} />
 					<Route path=":id" element={<Hotel />} />
-				</Route>
-				<Route path="admin">
-					<Route index element={<AdminPage />} />
 				</Route>
 				<Route path="*" element={<h1>страница не существует</h1>} />
 			</Route>

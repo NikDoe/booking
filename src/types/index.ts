@@ -1,15 +1,6 @@
-import { ReactNode } from "react";
+import { ISingleProps, IWrapperProps } from "./components";
+import { IUser, IUserRole, IUsersResponse, Role } from "./users";
 
-export interface ISingleProps {
-	id: number | string;
-	to: string;
-}
+export { Role };
 
-export interface IWrapperProps {
-	children: ReactNode;
-}
-
-export enum Role {
-	User = "user",
-	Admin = "admin",
-}
+export type { ISingleProps, IUser, IUsersResponse, IUserRole, IWrapperProps };

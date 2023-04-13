@@ -1,19 +1,6 @@
 import jwtDecode from "jwt-decode";
-import { Role } from "types";
+import { IUser, Role } from "types";
 import useAuthToken from "./useAuthToken";
-
-type UserRoles = {
-	value: string;
-	description: string;
-};
-
-interface IDecodedUser {
-	id: number;
-	username: string;
-	avatar: string;
-	email: string;
-	roles: UserRoles[];
-}
 
 const useAuth = () => {
 	const { token } = useAuthToken();
@@ -21,8 +8,7 @@ const useAuth = () => {
 	let isAdmin = false;
 
 	if (token) {
-		const { username, avatar, email, roles } =
-			jwtDecode<IDecodedUser>(token);
+		const { username, avatar, email, roles } = jwtDecode<IUser>(token);
 
 		isAdmin = roles.map((role) => role.value).includes(Role.Admin);
 

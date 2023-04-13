@@ -9,6 +9,7 @@ const ProfileMenuLinks = () => {
 			{isAdmin && <CustomNavLink to="admin">админ панель</CustomNavLink>}
 			{avatar && (
 				<>
+					<CustomNavLink to="profile">Личный кабинет</CustomNavLink>
 					<Logout />
 				</>
 			)}
