@@ -1,0 +1,6 @@
+.Footer {
+	display: flex;
+	justify-content: center;
+	background-color: var(--main-color);
+	padding: 10px 0;
+}

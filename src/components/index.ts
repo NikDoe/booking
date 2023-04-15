@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Header, Layout, Nav } from "./common";
+import { Footer, Header, Layout, Nav } from "./common";
 import FlightCard from "./FlightCard";
 import HotelCard from "./HotelCard";
 import CustomNavLink from "./NavLink";
@@ -8,6 +8,7 @@ import ProfileMenu from "./ProfileMenu";
 import Logout from "./Logout";
 import ProfileMenuLinks from "./ProfileMenuLinks";
 
+const DashBoard = lazy(() => import("./DashBoard"));
 const FlightsList = lazy(() => import("./FlightsList"));
 const HotelsList = lazy(() => import("./HotelsList"));
 const TrainsList = lazy(() => import("./TrainsList"));
@@ -15,8 +16,10 @@ const TrainsList = lazy(() => import("./TrainsList"));
 export {
 	ProfileMenu,
 	CustomNavLink,
+	DashBoard,
 	FlightCard,
 	FlightsList,
+	Footer,
 	HotelCard,
 	HotelsList,
 	Layout,
