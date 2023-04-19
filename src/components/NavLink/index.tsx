@@ -8,9 +8,11 @@ interface ICustomNavLinkProps {
 	children: ReactNode;
 	to: string;
 	onClick?: MouseEventHandler<HTMLAnchorElement> | undefined;
+	className: string;
 }
 
 const CustomNavLink: FC<ICustomNavLinkProps> = ({
+	className,
 	children,
 	to,
 	onClick,
@@ -21,7 +23,7 @@ const CustomNavLink: FC<ICustomNavLinkProps> = ({
 	return (
 		<Link
 			to={to}
-			className={clsx(styles.Main, match && styles.Active)}
+			className={clsx(styles.Main, match && styles.Active, className)}
 			onClick={onClick}
 			{...props}
 		>

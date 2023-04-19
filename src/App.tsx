@@ -1,5 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import { Layout } from "./components";
+import {
+	FlightsTable,
+	HotelsTable,
+	Layout,
+	TrainsTable,
+	UsersTable,
+} from "./components";
 import {
 	AdminPage,
 	Flight,
@@ -33,7 +39,12 @@ function App() {
 				<Route index element={<Public />} />
 				<Route path="login" element={<Login />} />
 				<Route path="signup" element={<SignUp />} />
-				<Route path="admin" element={<AdminPage />} />
+				<Route path="admin" element={<AdminPage />}>
+					<Route index element={<UsersTable />} />
+					<Route path="trains" element={<TrainsTable />} />
+					<Route path="flights" element={<FlightsTable />} />
+					<Route path="hotels" element={<HotelsTable />} />
+				</Route>
 				<Route path="profile" element={<ProfilePage />} />
 				<Route path="flights">
 					<Route index element={<Flights />} />
