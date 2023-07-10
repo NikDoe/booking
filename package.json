@@ -1,55 +1,29 @@
 {
-	"name": "frontend",
-	"private": true,
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"server": "npx json-server -p 3500 -w data/db.json",
-		"build": "tsc && vite build",
-		"preview": "vite preview",
-		"prepare": "husky install",
-		"pretty": "prettier --write ."
-	},
-	"dependencies": {
-		"@hookform/resolvers": "^3.0.0",
-		"@tanstack/react-table": "^8.8.5",
-		"jwt-decode": "^3.1.2",
-		"ky": "^0.33.2",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-hook-form": "^7.43.8",
-		"react-router-dom": "^6.6.1",
-		"react-toastify": "^9.1.2",
-		"react-transition-group": "^4.4.5",
-		"swr": "^2.0.3",
-		"webli-ui": "^0.9.13",
-		"yup": "^1.0.2"
-	},
-	"devDependencies": {
-		"@types/node": "^18.15.11",
-		"@types/react": "^18.0.26",
-		"@types/react-dom": "^18.0.9",
-		"@types/react-transition-group": "^4.4.5",
-		"@typescript-eslint/eslint-plugin": "^5.50.0",
-		"@typescript-eslint/parser": "^5.50.0",
-		"@vitejs/plugin-react": "^3.0.0",
-		"clsx": "^1.2.1",
-		"eslint": "^8.33.0",
-		"eslint-config-prettier": "^8.6.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-react": "^7.32.2",
-		"husky": "^8.0.0",
-		"lint-staged": "^13.1.0",
-		"prettier": "2.8.3",
-		"stylelint-config-prettier": "^9.0.4",
-		"stylelint-config-standard": "^29.0.0",
-		"typescript": "^4.9.3",
-		"vite": "^4.0.0"
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": "npx eslint --fix",
-		"*.(css|scss)": "npx stylelint --fix",
-		"*.{js,jsx,ts,tsx,html,css,json,cjs,md}": "npx prettier --write"
-	}
+  "name": "booking-frontend",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikDoe/booking-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikDoe/booking-frontend/issues"
+  },
+  "homepage": "https://github.com/NikDoe/booking-frontend#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "@types/webpack": "^5.28.1",
+    "html-webpack-plugin": "^5.5.3",
+    "ts-loader": "^9.4.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  }
 }
