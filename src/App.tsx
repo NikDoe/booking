@@ -4,13 +4,18 @@ import { Suspense } from "react";
 import { AboutPageAsync } from "./pages/AboutPage/AboutPage.async";
 import { MainPageAsync } from "./pages/MainPage/MainPage.async";
 
+import { useTheme } from "./theme/useTheme";
+
 import "./styles/index.scss";
 
 const App = () => {
+  const { theme, toogleTheme } = useTheme();
+
   return (
-    <div className='app dark'>
+    <div className={`app ${theme}`}>
       <Link to='/'>Главная</Link>
       <Link to='/about'>О Нас</Link>
+      <button onClick={toogleTheme}>TOOGLE</button>
       <Suspense fallback={<div>Загрузка...</div>}>
         <Routes>
           <Route path='/' element={<MainPageAsync />} />
