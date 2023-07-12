@@ -1,11 +1,19 @@
-import Counter from "./components/Counter";
+import { Link, Routes, Route } from "react-router-dom";
+
+import AboutPage from "./pages/AboutPage/AboutPage";
+import MainPage from "./pages/MainPage/MainPage";
+
 import "./index.scss";
 
 const App = () => {
   return (
     <>
-      <h1 className='title'>Заголовок</h1>
-      <Counter />
+      <Link to='/'>Главная</Link>
+      <Link to='/about'>О Нас</Link>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/about' element={<AboutPage />} />
+      </Routes>
     </>
   );
 };
