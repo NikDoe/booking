@@ -1,5 +1,13 @@
 .app.dark {
   --bg-color: #121212;
+  --bg-color-inverted: #ffffff;
+
+  --surface-color-01dp: rgba(255, 255, 255, 0.05);
+
   --primary-color: #bb86fc;
   --secondary-color: #03dac6;
+
+  --font-color-h: rgba(255, 255, 255, 0.87);
+  --font-color-m: rgba(255, 255, 255, 0.6);
+  --font-color-disabled: rgba(255, 255, 255, 0.33);
 }
