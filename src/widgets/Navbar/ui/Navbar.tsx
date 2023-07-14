@@ -10,6 +10,7 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={classNames(styles.Navbar, {}, [className])}>
+      <h1 className={styles.Logo}>LOGO</h1>
       <AppLink to='/'>Главная</AppLink>
       <AppLink to='/about'>О Нас</AppLink>
     </div>
