@@ -1,5 +1,5 @@
 import { classNames } from "shared/lib/classNames/classNames";
-import { Link } from "react-router-dom";
+import { AppLink } from "shared/ui/AppLink";
 
 import styles from "./Navbar.module.scss";
 
@@ -10,8 +10,8 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={classNames(styles.Navbar, {}, [className])}>
-      <Link to='/'>Главная</Link>
-      <Link to='/about'>О Нас</Link>
+      <AppLink to='/'>Главная</AppLink>
+      <AppLink to='/about'>О Нас</AppLink>
     </div>
   );
 };
