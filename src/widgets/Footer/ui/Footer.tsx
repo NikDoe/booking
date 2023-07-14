@@ -1,5 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTheme } from "app/providers/ThemeProvider";
+import { Button } from "shared/ui/Button";
 
 import styles from "./Footer.module.scss";
 
@@ -12,7 +13,7 @@ export const Footer = ({ className }: FooterProps) => {
 
   return (
     <div className={classNames(styles.Footer, {}, [className])}>
-      <button onClick={toogleTheme}>тема</button>
+      <Button onClick={toogleTheme}>тема</Button>
     </div>
   );
 };
