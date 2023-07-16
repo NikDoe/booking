@@ -1,14 +1,11 @@
 .app.dark {
   --bg-color: #121212;
-  --bg-color-inverted: #ffffff;
-
-  --surface-color-01dp: rgba(255, 255, 255, 0.05);
+  --bg-color-inverted: #fff;
+  --surface-color-01dp: rgb(255 255 255 / 5%);
   --header-color: var(--surface-color-01dp);
-
   --primary-color: #bb86fc;
   --secondary-color: #03dac6;
-
-  --font-color-h: rgba(255, 255, 255, 0.87);
-  --font-color-m: rgba(255, 255, 255, 0.6);
-  --font-color-disabled: rgba(255, 255, 255, 0.33);
+  --font-color-h: rgb(255 255 255 / 87%);
+  --font-color-m: rgb(255 255 255 / 60%);
+  --font-color-disabled: rgb(255 255 255 / 33%);
 }
