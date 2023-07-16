@@ -13,7 +13,8 @@ module.exports = {
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:react/jsx-runtime',
-        'plugin:@typescript-eslint/recommended'
+        'plugin:@typescript-eslint/recommended',
+        'plugin:i18next/recommended'
     ],
     'overrides': [
     ],
@@ -24,7 +25,8 @@ module.exports = {
     },
     'plugins': [
         'react',
-        '@typescript-eslint'
+        '@typescript-eslint',
+        'i18next'
     ],
     'rules': {
         'indent': [
@@ -43,6 +45,7 @@ module.exports = {
             'error',
             'always'
         ],
-        '@typescript-eslint/no-unused-vars': 'off'
+        '@typescript-eslint/no-unused-vars': 'off',
+        'i18next/no-literal-string': ['error', { markupOnly: true }],
     }
 };
