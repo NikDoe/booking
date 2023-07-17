@@ -1,0 +1,54 @@
+@keyframes spinner {
+    0% {
+        top: 49px;
+        left: 49px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: -0.5px;
+        left: -0.5px;
+        width: 99px;
+        height: 99px;
+        opacity: 0;
+    }
+}
+
+.Inner div {
+    box-sizing: content-box; 
+    position: absolute;
+    border-width: 1px;
+    border-style: solid;
+    opacity: 1;
+    border-radius: 50%;
+    animation: spinner 1s cubic-bezier(0,0.2,0.8,1) infinite;
+}
+
+.Inner div:nth-child(1) {
+    border-color: var(--font-color-h);
+    animation-delay: 0s;
+}
+
+.Inner div:nth-child(2) {
+    border-color: var(--font-color-m);
+    animation-delay: -0.5s;
+}
+
+.Main {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    overflow: hidden;
+    background: none;
+}
+
+.Inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(0.5);
+    backface-visibility: hidden;
+    transform-origin: 0 0;
+}

@@ -1,10 +1,12 @@
 .LangSwitcher {
   display: flex;
   align-items: center;
+  color: var(--font-color-h);
 }
 
 .Icon {
   width: 16px;
   height: auto;
   margin-right: 5px;
+  stroke: var(--font-color-h);
 }
