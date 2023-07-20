@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames';
 import { Button } from 'shared/ui/Button';
 import LanguageIcon from 'shared/assets/icons/language.svg';
 import { useTranslation } from 'react-i18next';

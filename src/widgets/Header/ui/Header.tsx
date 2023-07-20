@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames';
 
 import styles from './Header.module.scss';
 import { Navbar } from 'widgets/Navbar';

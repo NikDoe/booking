@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 
 import styles from './Footer.module.scss';

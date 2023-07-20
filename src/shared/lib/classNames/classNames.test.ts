@@ -1,4 +1,4 @@
-import { classNames } from './classNames';
+import { classNames } from 'shared/lib/classNames';
 
 describe('Тестирование хэлпера classNames', () => {
     test('Добавление главного класса', () => {
