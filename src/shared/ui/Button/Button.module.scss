@@ -1,9 +1,16 @@
 .Button {
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .clear {
   border: none;
   background: none;
   outline: none;
+}
+
+.outlined {
+  padding: 10px 20px;
+  border: 2px solid var(--primary-color);
+  background: none;
 }
