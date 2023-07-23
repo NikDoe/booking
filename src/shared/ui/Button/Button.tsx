@@ -5,7 +5,8 @@ import styles from './Button.module.scss';
 
 export enum ButtonTheme {
   CLEAR = 'clear',
-  OUTLINED = 'outlined',
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

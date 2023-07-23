@@ -1,11 +1,14 @@
 .app.dark {
-  --bg-color: #121212;
-  --bg-color-inverted: #fff;
-  --surface-color-01dp: rgb(255 255 255 / 5%);
+  --bg-color: #141416;
+  --bg-color-inverted: #fcfcfd;
+  --surface-color-01dp: #23262F;
   --header-color: var(--surface-color-01dp);
-  --primary-color: #bb86fc;
-  --secondary-color: #03dac6;
-  --font-color-h: rgb(255 255 255 / 87%);
-  --font-color-m: rgb(255 255 255 / 60%);
-  --font-color-disabled: rgb(255 255 255 / 33%);
+  --primary-color: #3B71FE;
+  --secondary-color: #58C27D;
+  --font-color-h: rgb(252 252 253 / 87%);
+  --font-color-m: rgb(252 252 253 / 60%);
+  --font-color-disabled: rgb(252 252 253 / 33%);
+
+  --font-colot-btn: #FCFCFD;
+  --box-shadow-color-btn: #777E90;
 }

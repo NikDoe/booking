@@ -1,11 +1,14 @@
 .app.light {
-  --bg-color: #fff;
-  --bg-color-inverted: #121212;
+  --bg-color: #FCFCFD;
+  --bg-color-inverted: #141416;
   --surface-color-01dp: #fff;
   --header-color: var(--primary-color);
-  --primary-color: #bb86fc;
-  --secondary-color: #03dac6;
-  --font-color-h: rgb(18 18 18 / 87%);
-  --font-color-m: rgb(18 18 18 / 60%);
-  --font-color-disabled: rgb(18 18 18 / 33%);
+  --primary-color: #3B71FE;
+  --secondary-color: #58C27D;
+  --font-color-h: rgb(20 20 22 / 87%);
+  --font-color-m: rgb(20 20 22 / 60%);
+  --font-color-disabled: rgb(20 20 22 / 33%);
+
+  --font-colot-btn: #FCFCFD;
+  --box-shadow-color-btn: #E6E8EC;
 }
