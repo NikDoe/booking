@@ -4,6 +4,8 @@ import { Button, ButtonTheme } from './Button';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 
+import Icon from '../../assets/icons/darkTheme.svg';
+
 const meta = {
     title: 'shared/Button',
     component: Button,
@@ -15,18 +17,33 @@ type Story = StoryObj<typeof meta>;
 
 export const Clear: Story = {
     args: {
-        children: 'text',
+        children: <Icon />,
         theme: ButtonTheme.CLEAR
     },
 };
 
 export const ClearDark: Story = {
     args: {
-        children: 'text',
+        children: <Icon />,
         theme: ButtonTheme.CLEAR
     },
 };
 ClearDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const Default: Story = {
+    args: {
+        children: 'text',
+        theme: ButtonTheme.DEFAULT
+    },
+};
+
+export const DefaultDark:  Story = {
+    args: {
+        children: 'text',
+        theme: ButtonTheme.DEFAULT
+    },
+};
+DefaultDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const Primary: Story = {
     args: {

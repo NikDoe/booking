@@ -1,9 +1,21 @@
 import { useTranslation } from 'react-i18next';
+import { classNames } from 'shared/lib/classNames';
 
-const MainPage = () => {
+import styles from './MainPage.module.scss';
+
+interface MainPageProps {
+    className?: string;
+}
+
+
+const MainPage = ({ className }: MainPageProps) => {
     const { t } = useTranslation('mainPage');
 
-    return <h1>{t('Главная страница')}</h1>;
+    return (
+        <div className={classNames(styles.MainPage, {}, [className])}>
+            <h1>{t('Заголовок')}</h1>
+        </div>
+    );
 };
 
 export default MainPage;

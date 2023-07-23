@@ -1,22 +1,44 @@
 .Button {
+  display: inline-flex;
   cursor: pointer;
   border-radius: 24px;
   color: #fff;
   padding: 10px 20px;
   border: none;
   outline: none;
+
+  transition: all .2s ease-in;
 }
 
 .clear {
+  padding: 0;
+  background: none;
+}
+
+.default {
   background: none;
   color: var(--font-color-h);
-  box-shadow: 0 0 0 2px var(--box-shadow-color-btn) inset
+  box-shadow: 0 0 0 2px var(--box-shadow-color-btn) inset;
+
+  &:hover {
+    background: var(--bg-color-default-btn-hover);
+    color: var(--font-color-default-btn-hover);
+    box-shadow: 0 0 0 2px var(--bg-color-default-btn-hover) inset;
+  }
 }
 
 .primary {
   background: var(--primary-color);
+
+  &:hover {
+    background: var(--bg-color-primary-btn-hover);
+  }
 }
 
 .secondary {
   background: var(--secondary-color);
+
+  &:hover {
+    background: var(--bg-color-secondary-btn-hover);
+  }
 }

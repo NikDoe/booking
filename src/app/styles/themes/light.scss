@@ -9,6 +9,14 @@
   --font-color-m: rgb(20 20 22 / 60%);
   --font-color-disabled: rgb(20 20 22 / 33%);
 
-  --font-colot-btn: #FCFCFD;
   --box-shadow-color-btn: #E6E8EC;
+
+  --bg-color-default-btn-hover: #23262F;
+  --font-color-default-btn-hover: var(--bg-color);
+
+  --bg-color-primary-btn-hover: #0042EC;
+
+  --bg-color-secondary-btn-hover: #42B168;
+
+  --border-color: #E6E8EC;
 }

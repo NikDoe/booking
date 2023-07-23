@@ -4,6 +4,8 @@
 @import "./themes/light";
 
 .app {
+  display: flex;
+  flex-direction: column;
   font: var(--font-m);
   background: var(--bg-color);
   color: var(--primary-color);
@@ -12,5 +14,5 @@
 
 .page-content {
   display: flex;
-  flex-grow: 1;
+  flex: 1 1 auto;
 }

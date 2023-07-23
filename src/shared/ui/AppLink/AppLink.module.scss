@@ -1,12 +1,22 @@
 .AppLink {
   text-decoration: none;
   margin-left: 20px;
+
+  transition: all .2s ease-in;
+}
+
+.default {
+  color: var(--font-color-m);
+
+  &:hover {
+    color: var(--font-color-h);
+  }
 }
 
 .primary {
-  color: var(--font-color-h);
-}
+  color: var(--font-color-m);
 
-.secondary {
-  color: chartreuse;
+  &:hover {
+    color: var(--primary-color);
+  }
 }
