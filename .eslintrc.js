@@ -50,6 +50,7 @@ module.exports = {
         'i18next/no-literal-string': ['error', {
             markupOnly: true
         }],
-        'object-curly-spacing': ['error', 'always']
+        'object-curly-spacing': ['error', 'always'],
+        '@typescript-eslint/no-var-requires': 'off',
     }
 };
