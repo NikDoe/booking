@@ -18,12 +18,22 @@ module.exports = {
         'plugin:storybook/recommended'
         , 
     ],
-    'overrides': [{
-        files: ['**/src/**/*.test.{ts,tsx}'],
-        rules: {
-            'i18next/no-literal-string': 'off'
-        }
-    }],
+    'overrides': [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off'
+            }
+        },
+        {
+            files: ['**/*.json'],
+            rules: {
+                'quotes': 'off',
+                'semi': 'off',
+            }
+        },
+
+    ],
     'parser': '@typescript-eslint/parser',
     'parserOptions': {
         'ecmaVersion': 'latest',
