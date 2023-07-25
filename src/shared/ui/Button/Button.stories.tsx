@@ -45,6 +45,21 @@ export const DefaultDark:  Story = {
 };
 DefaultDark.decorators = [ThemeDecorator(Theme.DARK)];
 
+export const Rounded: Story = {
+    args: {
+        children: <Icon />,
+        theme: ButtonTheme.ROUNDED
+    },
+};
+
+export const RoundedDark: Story = {
+    args: {
+        children: <Icon />,
+        theme: ButtonTheme.ROUNDED
+    },
+};
+RoundedDark.decorators = [ThemeDecorator(Theme.DARK)];
+
 export const Primary: Story = {
     args: {
         children: 'text',

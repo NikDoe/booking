@@ -1,0 +1,51 @@
+.Modal {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .2s ease-in;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: var(--modal-overlay-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    max-width: 60%;
+    padding: 20px;
+    background: var(--bg-color);
+    border-radius: var(--modal-border-radius);
+    position: relative;
+    transition: transform .2s ease-in;
+    transform: scale(0.5);
+}
+
+.close {
+    position: absolute;
+    right: calc(var(--icon-size) / 2 * -1);
+    top: calc(var(--icon-size) / 2 * -1);
+    border-radius: 50%;
+    box-shadow: 0 calc(var(--icon-size) / 2) var(--icon-size) rgb(15 15 15 / 10%);
+
+    svg {
+        width: var(--icon-size);
+        height: var(--icon-size);
+        fill:  var(--bg-color-inverted);
+    }
+}
+
+.opened {
+    z-index: 10;
+    pointer-events: auto;
+    opacity: 1;
+    
+    .content {
+        transform: scale(1);
+    }
+}

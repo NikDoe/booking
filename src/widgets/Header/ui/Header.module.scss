@@ -1,7 +1,27 @@
 .Header {
   width: 100%;
-  padding: 15px 0;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  margin-left: 20px;
+
+  svg {
+    width: calc(var(--icon-size) * 1.5);
+    height: calc(var(--icon-size) * 1.5);
+    fill: var(--secondary-color);
+    transition: fill .2s ease-in;
+
+    &:hover {
+      fill: var(--bg-color-secondary-btn-hover);
+    }
+  }
 }
