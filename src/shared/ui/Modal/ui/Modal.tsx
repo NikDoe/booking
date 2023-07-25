@@ -1,11 +1,12 @@
 import { FC, ReactNode, useCallback, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames';
 import { Button } from 'shared/ui/Button';
+import { Portal } from 'shared/ui/Portal';
+import { useTheme } from 'app/providers/ThemeProvider';
 
 import CloseIcon from 'shared/assets/icons/close-btn.svg';
 
 import styles from './Modal.module.scss';
-import { Portal } from 'shared/ui/Portal';
 
 interface ModalProps {
     children?: ReactNode;
@@ -16,6 +17,8 @@ interface ModalProps {
 
 export const Modal: FC<ModalProps> = (props) => {
     const { children, className, isOpen, onClose } = props;
+
+    const { theme } = useTheme();
 
     const mods: Record<string, boolean> = {
         [styles.opened] : isOpen,
@@ -43,7 +46,7 @@ export const Modal: FC<ModalProps> = (props) => {
 
     return (
         <Portal>
-            <div className={classNames(styles.Modal, mods, [className])}>
+            <div className={classNames(styles.Modal, mods, [className, theme])}>
                 <div 
                     className={styles.overlay} 
                     onClick={closeHandler}
