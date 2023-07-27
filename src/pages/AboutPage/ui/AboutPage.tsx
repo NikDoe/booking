@@ -12,7 +12,7 @@ const AboutPage = ({ className }: AboutPageProps) => {
 
     return (
         <div className={classNames(styles.AboutPage, {}, [className])}>
-            <h1>{t('Заголовок')}</h1>
+            <h1>{t('Страница О Нас')}</h1>
         </div>
     );
 };

@@ -7,13 +7,12 @@ interface MainPageProps {
     className?: string;
 }
 
-
 const MainPage = ({ className }: MainPageProps) => {
     const { t } = useTranslation('mainPage');
 
     return (
         <div className={classNames(styles.MainPage, {}, [className])}>
-            <h1>{t('Заголовок')}</h1>
+            <h1>{t('Главная страница')}</h1>
         </div>
     );
 };
