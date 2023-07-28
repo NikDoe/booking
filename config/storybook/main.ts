@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import path from 'path';
-import { Configuration } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 
 const config: StorybookConfig = {
@@ -29,6 +29,10 @@ const config: StorybookConfig = {
         };
         config!.resolve!.modules!.push(paths.src);
         config!.resolve!.extensions!.push('.ts', '.tsx');
+        config!.resolve!.alias = {
+            ...config!.resolve!.alias,
+            '@': paths.src,
+        };
 
         config!.module!.rules = config!.module!.rules!.map(
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -48,6 +52,12 @@ const config: StorybookConfig = {
         });
 
         config!.module!.rules!.push(buildCssLoader(true));
+
+        config!.plugins!.push(
+            new DefinePlugin({
+                __IS_DEV__: true,
+            }),
+        );
 
         return config;
     },

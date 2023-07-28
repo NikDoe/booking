@@ -1,8 +1,8 @@
 import { useTheme } from './providers/ThemeProvider';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames';
 import { AppRouter } from './providers/router';
-import { Header } from 'widgets/Header';
-import { Footer } from 'widgets/Footer';
+import { Header } from '@/widgets/Header';
+import { Footer } from '@/widgets/Footer';
 import { Suspense } from 'react';
 
 import './styles/index.scss';

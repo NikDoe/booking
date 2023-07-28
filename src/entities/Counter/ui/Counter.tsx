@@ -1,4 +1,4 @@
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { counterActions } from '../model/slice/counterSlice';
@@ -23,7 +23,7 @@ export const Counter = () => {
             <Button
                 theme={ButtonTheme.DEFAULT}
                 onClick={increment}
-                data-testid="increment-btn"
+                data-testid="increment"
             >
                 {t('increment')}
             </Button>

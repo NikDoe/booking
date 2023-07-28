@@ -1,14 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Navbar } from './Navbar';
+import { Counter } from './Counter';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Theme } from '@/app/providers/ThemeProvider';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 const meta = {
-    title: 'widgets/Navbar',
-    component: Navbar,
+    title: 'entities/Counter',
+    component: Counter,
     tags: ['autodocs'],
-} satisfies Meta<typeof Navbar>;
+    decorators: [StoreDecorator({
+        counter: {
+            value: 0,
+        }
+    })]
+} satisfies Meta<typeof Counter>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

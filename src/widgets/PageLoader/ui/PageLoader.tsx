@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames';
 import { useTranslation } from 'react-i18next';
-import { Loader } from 'shared/ui/Loader';
+import { Loader } from '@/shared/ui/Loader';
 
 import styles from './PageLoader.module.scss';
 

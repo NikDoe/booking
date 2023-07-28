@@ -7,6 +7,9 @@ import type { Config } from 'jest';
 import path from 'path';
 
 const config: Config = {
+    globals: {
+        __IS_DEV__: true,
+    },
     clearMocks: true,
     coveragePathIgnorePatterns: [
         '\\\\node_modules\\\\'
@@ -36,6 +39,7 @@ const config: Config = {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '^@/(.*)$': '<rootDir>/src/$1',
     },
 
     // Indicates whether the coverage information should be collected while executing the test

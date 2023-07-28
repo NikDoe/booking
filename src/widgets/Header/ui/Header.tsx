@@ -1,13 +1,15 @@
-import { classNames } from 'shared/lib/classNames';
-import { Navbar } from 'widgets/Navbar';
-import { LangSwitcher } from 'shared/ui/LangSwitcher';
-import { Button } from 'shared/ui/Button';
-import { Modal } from 'shared/ui/Modal';
+import { classNames } from '@/shared/lib/classNames';
+import { Navbar } from '@/widgets/Navbar';
+import { LangSwitcher } from '@/shared/ui/LangSwitcher';
+import { Button } from '@/shared/ui/Button';
+import { Modal } from '@/shared/ui/Modal';
 import { useCallback, useState } from 'react';
+import { Counter } from '@/entities/Counter';
 
 import AuthIcon from 'shared/assets/icons/auth.svg';
 
 import styles from './Header.module.scss';
+
 
 interface HeaderProps {
   className?: string;
@@ -36,11 +38,7 @@ export const Header = ({ className }: HeaderProps) => {
                 </Button>
                 {/*eslint-disable-next-line i18next/no-literal-string */}
                 <Modal isOpen={isAuthOpen} onClose={onToggleModal}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ab et perferendis mollitia. Voluptatem dolor numquam
-                    aliquam eaque asperiores? Possimus laudantium
-                    reprehenderit doloribus alias officiis aliquid mollitia
-                    at necessitatibus fugiat earum?
+                    <Counter />
                 </Modal>
             </div>
         </div>

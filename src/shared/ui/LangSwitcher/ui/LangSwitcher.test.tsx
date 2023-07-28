@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
-import { renderWithTranslation } from 'shared/lib/tests/renderWithTranslation';
-import { LangSwitcher } from 'shared/ui/LangSwitcher';
+import { renderWithTranslation } from '@/shared/lib/tests/renderWithTranslation';
+import { LangSwitcher } from '@/shared/ui/LangSwitcher';
 
 describe('Тестирование компонента LangSwitcher', () => {
     test('присутствует ли элемент в документе', () => {
