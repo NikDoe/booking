@@ -7,5 +7,9 @@
   "Произошла ошибка": "An error has occurred",
   "Обновить страницу": "Reload page",
   "increment": "increment",
-  "decrement": "decrement"
+  "decrement": "decrement",
+  "login-form-title": "Sign in",
+  "login-email-input": "Enter your email",
+  "login-password-input": "Enter your password",
+  "login-btn": "Login"
 }

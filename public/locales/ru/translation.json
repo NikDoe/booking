@@ -7,5 +7,9 @@
   "Произошла ошибка": "Произошла ошибка",
   "Обновить страницу": "Обновить страницу",
   "increment": "прибавить",
-  "decrement": "отнять"
+  "decrement": "отнять",
+  "login-form-title": "Войти в аккаунт",
+  "login-email-input": "Введите Ваш email",
+  "login-password-input": "Введите Ваш password",
+  "login-btn": "Войти"
 }

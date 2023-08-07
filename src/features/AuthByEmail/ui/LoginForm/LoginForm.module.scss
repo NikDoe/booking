@@ -1,0 +1,15 @@
+.LoginForm {
+    padding: calc(var(--size) * 3) calc(var(--size) * 4);
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--bg-color-inverted);
+}
+
+.button {
+    margin: 20px 0 0;
+}

@@ -9,10 +9,7 @@ const meta = {
     title: 'widgets/Header',
     component: Header,
     tags: ['autodocs'],
-    decorators: [StoreDecorator({
-        counter: {
-            value: 0
-        }
+    decorators: [StoreDecorator({ user: { authData:{ email: 'email', id: '1' } }
     })]
 } satisfies Meta<typeof Header>;
 
