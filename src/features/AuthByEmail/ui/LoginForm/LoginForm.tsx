@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { classNames } from '@/shared/lib/classNames';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
@@ -12,11 +13,16 @@ interface LoginFormProps {
 
 export const LoginForm = ({ className }: LoginFormProps) => {
     const { t } = useTranslation('translation');
+
+    const emailRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => emailRef.current && emailRef.current.focus());
     
     return (
         <div className={classNames(styles.LoginForm, {}, [className])}>
             <h1 className={styles.title}>{t('login-form-title')}</h1>
             <Input
+                ref={emailRef}
                 placeholder={t('login-email-input')} 
                 type='email'
             />

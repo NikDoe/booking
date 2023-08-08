@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames';
-import { InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
+import { InputHTMLAttributes, Ref, forwardRef, memo, useState } from 'react';
 
 import styles from './Input.module.scss';
 
@@ -14,7 +14,7 @@ interface InputProps extends HTMLInputProps {
     onChange?: (value: string) => void;
 }
 
-export const Input = memo(function Input(props: InputProps) {
+const InputComponent = forwardRef((props: InputProps, ref: Ref<HTMLInputElement>) => {
     const { 
         className,
         type = 'text',
@@ -25,14 +25,7 @@ export const Input = memo(function Input(props: InputProps) {
     } = props;
 
     const [isFocused, setIsFocused] = useState(false);
-    const ref = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        if (autoFocus) {
-            setIsFocused(true);
-            ref.current.focus();
-        }
-    }, [autoFocus]);
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
@@ -63,3 +56,7 @@ export const Input = memo(function Input(props: InputProps) {
         />
     );
 });
+
+InputComponent.displayName = 'InputComponent';
+
+export const Input = memo(InputComponent);
